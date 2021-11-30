@@ -3,8 +3,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'lenses',
-		'input',
-		'output'
+		'input'
 	],
 	#category : #'GToolkit-Lenses-Executors'
 }
@@ -12,13 +11,10 @@ Class {
 { #category : #execution }
 LensesExecutor >> execute [
 
-	| anOutput |
-	anOutput := self input executor
-		            lenses: self lenses;
-		            execute;
-		            output.
-
-	self output: anOutput
+	^ self input executor
+		  lenses: self lenses;
+		  execute;
+		  context
 ]
 
 { #category : #accessing }
@@ -43,16 +39,4 @@ LensesExecutor >> lenses [
 LensesExecutor >> lenses: anObject [
 
 	lenses := anObject
-]
-
-{ #category : #accessing }
-LensesExecutor >> output [
-
-	^ output
-]
-
-{ #category : #accessing }
-LensesExecutor >> output: anObject [
-
-	output := anObject
 ]

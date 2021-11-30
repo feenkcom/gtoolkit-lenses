@@ -13,10 +13,17 @@ LensesJson class >> forObject: anObject [
 	^ self new object: anObject
 ]
 
+{ #category : #converting }
+LensesJson >> asOutput [
+
+	^ self copy
+]
+
 { #category : #execution }
 LensesJson >> executor [
 
-	^ LensesJsonExecutor new input: self; output: self copy
+	^ LensesJsonExecutor new context:
+		  (LensesInitialInput new input: self)
 ]
 
 { #category : #'gt - extensions' }
@@ -30,6 +37,12 @@ LensesJson >> gtJsonFor: aView [
 		  priority: 1;
 		  object: [ self object ];
 		  view: #gtTreeFor:
+]
+
+{ #category : #'gt - extensions' }
+LensesJson >> gtLiveFor: aView [
+
+	^ self gtJsonFor: aView
 ]
 
 { #category : #accessing }

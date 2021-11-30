@@ -17,6 +17,14 @@ Lenses >> accept: aVisitor [
 ]
 
 { #category : #execution }
+Lenses >> execute: anInput [
+
+	^ self executor
+		  input: anInput;
+		  execute
+]
+
+{ #category : #execution }
 Lenses >> executor [
 
 	^ LensesExecutor new lenses: self
@@ -59,8 +67,5 @@ Lenses >> name: anObject [
 { #category : #execution }
 Lenses >> transform: anInput [
 
-	^ self executor
-		  input: anInput;
-		  execute;
-		  output
+	^ (self execute: anInput) output
 ]

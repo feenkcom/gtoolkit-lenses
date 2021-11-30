@@ -21,18 +21,37 @@ LensesExamples >> basicLenses [
 LensesExamples >> executeTwoRenames [
 
 	<gtExample>
-	| aLenses anOutput |
+	| aLenses aResult |
 	aLenses := self lensesWithTwoRenames.
 
-	anOutput := aLenses transform:
+	aResult := aLenses execute:
 		            (LensesJson forObject: (OrderedDictionary new
 				              at: 'body' put: 'This is a description';
 				              at: 'state' put: 'open';
 				              yourself)).
 
-	self assert: anOutput object size equals: 2.
+	self assert: aResult output object size equals: 2.
 
-	^ anOutput
+	^ aResult
+]
+
+{ #category : #'examples - lenses' }
+LensesExamples >> executeTwoRenamesOneRemove [
+
+	<gtExample>
+	| aLenses aResult |
+	aLenses := self lensesWithTwoRenamesOneRemove.
+
+	aResult := aLenses execute:
+		           (LensesJson forObject: (OrderedDictionary new
+				             at: 'body' put: 'This is a description';
+				             at: 'state' put: 'open';
+				             at: 'labels' put: {  };
+				             yourself)).
+
+	self assert: aResult output object size equals: 2.
+
+	^ aResult
 ]
 
 { #category : #'examples - lenses' }
@@ -51,6 +70,21 @@ LensesExamples >> lensesWithTwoRenames [
 				 destination: 'status') }.
 
 	self assert: aLenses lenses size equals: 2.
+
+	^ aLenses
+]
+
+{ #category : #'examples - lenses' }
+LensesExamples >> lensesWithTwoRenamesOneRemove [
+
+	<gtExample>
+	| aLenses |
+	aLenses := self lensesWithTwoRenames.
+
+	aLenses lenses:
+		(aLenses lenses copyWith: (LensesRemoveProperty new name: 'labels')).
+
+	self assert: aLenses lenses size equals: 3.
 
 	^ aLenses
 ]
