@@ -10,7 +10,7 @@ Class {
 	#category : #'GToolkit-Lenses-Properties'
 }
 
-{ #category : #accessing }
+{ #category : #visiting }
 LensesRenameProperty >> accept: aVisitor [
 
 	^ aVisitor visitLensesRenameProperty: self
@@ -42,8 +42,7 @@ LensesRenameProperty >> gtDisplayOn: aStream [
 		nextPutAll: 'Rename ';
 		nextPutAll: self source asString;
 		nextPutAll: ' to ';
-		nextPutAll: self destination asString;
-		nextPut: $)
+		nextPutAll: self destination asString
 ]
 
 { #category : #printing }

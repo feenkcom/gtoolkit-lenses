@@ -3,8 +3,14 @@ Trait {
 	#category : #'GToolkit-Lenses-Properties'
 }
 
-{ #category : #accessing }
+{ #category : #visiting }
 TLensesProperty >> accept: aVisitor [
 
 	^ self explicitRequirement
+]
+
+{ #category : #'gt - extensions' }
+TLensesProperty >> gtLensesChildren [
+
+	^ #(  )
 ]

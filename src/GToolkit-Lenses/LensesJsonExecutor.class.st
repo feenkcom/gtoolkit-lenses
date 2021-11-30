@@ -52,6 +52,12 @@ LensesJsonExecutor >> output: anObject [
 ]
 
 { #category : #visiting }
+LensesJsonExecutor >> visitLenses: aProperty [
+
+	aProperty lenses do: [ :eachProperty | eachProperty accept: self ]
+]
+
+{ #category : #visiting }
 LensesJsonExecutor >> visitLensesRenameProperty: aProperty [
 
 	| anObject |
