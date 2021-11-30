@@ -79,10 +79,17 @@ LensesExamples >> lensesWithTwoRenamesOneRemove [
 
 	<gtExample>
 	| aLenses |
-	aLenses := self lensesWithTwoRenames.
+	aLenses := self basicLenses.
 
-	aLenses lenses:
-		(aLenses lenses copyWith: (LensesRemoveProperty new name: 'labels')).
+	aLenses lenses: { 
+			(LensesRenameProperty new
+				 source: 'body';
+				 destination: 'description').
+			(LensesRenameProperty new
+				 source: 'state';
+				 destination: 'status').
+			(LensesRemoveProperty new 
+				 name: 'labels') }.
 
 	self assert: aLenses lenses size equals: 3.
 
