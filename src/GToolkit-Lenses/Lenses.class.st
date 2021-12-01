@@ -37,7 +37,8 @@ Lenses >> gtLensesFor: aView [
 	^ aView tree
 		  title: 'Lenses';
 		  items: [ self lenses ];
-		  children: [ :aProperty | aProperty gtLensesChildren ]
+		  children: [ :aProperty | aProperty gtLensesChildren ];
+		  expandAll
 ]
 
 { #category : #accessing }

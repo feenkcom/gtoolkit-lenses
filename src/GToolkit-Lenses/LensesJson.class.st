@@ -14,6 +14,14 @@ LensesJson class >> forObject: anObject [
 ]
 
 { #category : #converting }
+LensesJson >> asChildWith: anObject [
+
+	^ LensesChildJson new
+		  parent: self;
+		  object: anObject
+]
+
+{ #category : #converting }
 LensesJson >> asOutput [
 
 	^ self copy

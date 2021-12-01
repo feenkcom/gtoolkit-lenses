@@ -91,7 +91,7 @@ LensesJsonExecutor >> visitLenses: aProperty [
 	self visitManyProperties: aProperty lenses
 ]
 
-{ #category : #accessing }
+{ #category : #visiting }
 LensesJsonExecutor >> visitLensesAddProperty: aProperty [
 
 	| anObject |
@@ -103,6 +103,22 @@ LensesJsonExecutor >> visitLensesAddProperty: aProperty [
 	self context output object: anObject.
 
 	anObject at: aProperty name put: (aProperty value)
+]
+
+{ #category : #visiting }
+LensesJsonExecutor >> visitLensesInProperty: aProperty [
+
+	| aChildInputObject aChildInput aChildOutputObject aChildOutput |
+	aChildInputObject := self context input object at: aProperty name.
+	aChildOutputObject := self context output object at: aProperty name.
+	aChildInput := self context input asChildWith: aChildInputObject.
+	aChildOutput := self context output asChildWith: aChildOutputObject.
+	self context input: aChildInput.
+	self context output: aChildOutput.
+
+	"somehow set child as input"
+	self visitManyProperties: aProperty lenses
+	"somehow unset the child as input"
 ]
 
 { #category : #visiting }

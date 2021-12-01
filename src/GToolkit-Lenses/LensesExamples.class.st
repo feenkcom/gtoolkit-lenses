@@ -17,6 +17,27 @@ LensesExamples >> basicLenses [
 	^ aLenses
 ]
 
+{ #category : #accessing }
+LensesExamples >> executeInProperty [
+
+	<gtExample>
+	| aLenses aResult |
+	aLenses := self lensesWithInProperty.
+
+	aResult := aLenses execute: (LensesJson forObject: (Dictionary new
+				             at: 'body' put: 'This is a description';
+				             at: 'state' put: 'open';
+				             at: 'label' put: (Dictionary new
+						              at: 'id' put: 23434267;
+						              at: 'name' put: 'bug';
+						              yourself);
+				             yourself)).
+
+	self assert: aResult output object size equals: 3.
+
+	^ aResult
+]
+
 { #category : #'examples - lenses' }
 LensesExamples >> executeTwoRenames [
 
@@ -71,6 +92,27 @@ LensesExamples >> executeTwoRenamesOneRemoveOneAdd [
 	self assert: aResult output object size equals: 3.
 
 	^ aResult
+]
+
+{ #category : #accessing }
+LensesExamples >> lensesWithInProperty [
+
+	<gtExample>
+	| aLenses |
+	aLenses := self basicLenses.
+
+	aLenses lenses: { (LensesInProperty new
+			 name: 'label';
+			 lenses: { 
+					 (LensesRenameProperty new
+						  source: 'name';
+						  destination: 'category').
+					 (LensesRemoveProperty new name: 'id') }) }.
+
+	self assert: aLenses lenses size equals: 1.
+	self assert: aLenses lenses first lenses size equals: 2.
+
+	^ aLenses
 ]
 
 { #category : #'examples - lenses' }
