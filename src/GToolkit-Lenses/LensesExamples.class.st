@@ -38,6 +38,20 @@ LensesExamples >> executeInProperty [
 	^ aResult
 ]
 
+{ #category : #accessing }
+LensesExamples >> executeIssueTrackerLenses [
+
+	<gtExample>
+	| aLenses aResult |
+	aLenses := self lensesForIssueTracker.
+
+	aResult := aLenses execute: self originalIssueTrackerJsonString.
+
+	self assert: aResult output object size equals: 4.
+
+	^ aResult
+]
+
 { #category : #'examples - lenses' }
 LensesExamples >> executeTwoRenames [
 
@@ -92,6 +106,32 @@ LensesExamples >> executeTwoRenamesOneRemoveOneAdd [
 	self assert: aResult output object size equals: 3.
 
 	^ aResult
+]
+
+{ #category : #accessing }
+LensesExamples >> lensesForIssueTracker [
+
+	<gtExample>
+	| aLenses |
+	aLenses := self basicLenses.
+
+	aLenses lenses: { 
+			(LensesRenameProperty new
+				 source: 'body';
+				 destination: 'description').
+			(LensesRenameProperty new
+				 source: 'state';
+				 destination: 'status').
+			(LensesInProperty new
+				 name: 'labels';
+				 lenses: { (LensesRenameProperty new
+						  source: 'name';
+						  destination: 'category') }).
+			(LensesRemoveProperty new name: 'labels') }.
+
+	self assert: aLenses lenses size equals: 4.
+
+	^ aLenses
 ]
 
 { #category : #accessing }
@@ -180,4 +220,35 @@ LensesExamples >> lensesWithTwoRenamesOneRemoveOneAdd [
 	self assert: aLenses lenses size equals: 4.
 
 	^ aLenses
+]
+
+{ #category : #accessing }
+LensesExamples >> originalIssueTrackerJsonObject [
+
+	<gtExample>
+	^ STONJSON fromString: self originalIssueTrackerJsonString
+]
+
+{ #category : #'examples - lenses' }
+LensesExamples >> originalIssueTrackerJsonString [
+
+	<gtExample>
+	
+	^ '{
+    "id": 1,
+    "state": "open",
+    "title": "Found a bug",
+    "body": "I''m having a problem with this.",
+    "labels": [
+      {
+        "id": 208045946,
+        "node_id": "MDU6TGFiZWwyMDgwNDU5NDY=",
+        "url": "https://api.github.com/repos/octocat/Hello-World/labels/bug",
+        "name": "bug",
+        "description": "Something isn''t working",
+        "color": "f29513",
+        "default": true
+      }
+    ]
+  }'
 ]

@@ -95,14 +95,9 @@ LensesJsonExecutor >> visitLenses: aProperty [
 LensesJsonExecutor >> visitLensesAddProperty: aProperty [
 
 	| anObject |
-	self assert: self context property == aProperty.
-	self assert:
-		(self context output object includesKey: aProperty name) not.
+	self assert: self step property == aProperty.
 
-	anObject := self context output object copy.
-	self context output object: anObject.
-
-	anObject at: aProperty name put: (aProperty value)
+	self step at: aProperty name put: (aProperty value)
 ]
 
 { #category : #visiting }

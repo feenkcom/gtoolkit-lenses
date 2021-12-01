@@ -15,6 +15,12 @@ LensesInitialJsonObject class >> forObject: anObject [
 	^ self new object: anObject
 ]
 
+{ #category : #accessing }
+LensesInitialJsonObject class >> fromString: aString [
+
+	^ self forObject: (STONJSON fromString: aString)
+]
+
 { #category : #execution }
 LensesInitialJsonObject >> executor [
 

@@ -19,7 +19,7 @@ Lenses >> accept: aVisitor [
 { #category : #execution }
 Lenses >> execute: anInput [
 
-	^ anInput executor
+	^ anInput asLensesInput executor
 		  lenses: self;
 		  execute;
 		  step
