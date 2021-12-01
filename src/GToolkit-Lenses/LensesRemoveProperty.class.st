@@ -12,7 +12,7 @@ Class {
 { #category : #visiting }
 LensesRemoveProperty >> accept: aVisitor [
 
-	^ aVisitor visitRemoveProperty: self
+	^ aVisitor visitLensesRemoveProperty: self
 ]
 
 { #category : #printing }

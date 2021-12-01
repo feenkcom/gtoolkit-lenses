@@ -92,6 +92,21 @@ LensesJsonExecutor >> visitLenses: aProperty [
 ]
 
 { #category : #visiting }
+LensesJsonExecutor >> visitLensesRemoveProperty: aProperty [
+
+	| anObject |
+	self assert: self context property == aProperty.
+
+	anObject := self context output object copy.
+	self context output object: anObject.
+
+	anObject
+		at: aProperty name
+		ifPresent: [ :aValue | anObject removeKey: aProperty name ]
+		ifAbsent: [ "ignore" ]
+]
+
+{ #category : #visiting }
 LensesJsonExecutor >> visitLensesRenameProperty: aProperty [
 
 	| anObject |
@@ -120,19 +135,4 @@ LensesJsonExecutor >> visitOneProperty: aProperty [
 
 	context := context forProperty: aProperty.
 	aProperty accept: self.
-]
-
-{ #category : #visiting }
-LensesJsonExecutor >> visitRemoveProperty: aProperty [
-
-	| anObject |
-	self assert: self context property == aProperty.
-
-	anObject := self context output object copy.
-	self context output object: anObject.
-
-	anObject
-		at: aProperty name
-		ifPresent: [ :aValue | anObject removeKey: aProperty name ]
-		ifAbsent: [ "ignore" ]
 ]
