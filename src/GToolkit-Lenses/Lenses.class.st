@@ -19,15 +19,10 @@ Lenses >> accept: aVisitor [
 { #category : #execution }
 Lenses >> execute: anInput [
 
-	^ self executor
-		  input: anInput;
-		  execute
-]
-
-{ #category : #execution }
-Lenses >> executor [
-
-	^ LensesExecutor new lenses: self
+	^ anInput executor
+		  lenses: self;
+		  execute;
+		  step
 ]
 
 { #category : #'gt - extensions' }
