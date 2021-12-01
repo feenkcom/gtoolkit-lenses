@@ -54,6 +54,25 @@ LensesExamples >> executeTwoRenamesOneRemove [
 	^ aResult
 ]
 
+{ #category : #accessing }
+LensesExamples >> executeTwoRenamesOneRemoveOneAdd [
+
+	<gtExample>
+	| aLenses aResult |
+	aLenses := self lensesWithTwoRenamesOneRemoveOneAdd.
+
+	aResult := aLenses execute:
+		           (LensesJson forObject: (OrderedDictionary new
+				             at: 'body' put: 'This is a description';
+				             at: 'state' put: 'open';
+				             at: 'labels' put: { 'enhancement'. 'todo' };
+				             yourself)).
+
+	self assert: aResult output object size equals: 3.
+
+	^ aResult
+]
+
 { #category : #'examples - lenses' }
 LensesExamples >> lensesWithTwoRenames [
 
@@ -92,6 +111,31 @@ LensesExamples >> lensesWithTwoRenamesOneRemove [
 				 name: 'labels') }.
 
 	self assert: aLenses lenses size equals: 3.
+
+	^ aLenses
+]
+
+{ #category : #accessing }
+LensesExamples >> lensesWithTwoRenamesOneRemoveOneAdd [
+
+	<gtExample>
+	| aLenses |
+	aLenses := self basicLenses.
+
+	aLenses lenses: { 
+			(LensesRenameProperty new
+				 source: 'body';
+				 destination: 'description').
+			(LensesRenameProperty new
+				 source: 'state';
+				 destination: 'status').
+			(LensesRemoveProperty new 
+				 name: 'labels').
+			(LensesAddProperty new
+				 name: 'options';
+				 value: #(  )) }.
+
+	self assert: aLenses lenses size equals: 4.
 
 	^ aLenses
 ]
