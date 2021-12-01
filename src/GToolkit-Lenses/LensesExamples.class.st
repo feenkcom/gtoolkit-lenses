@@ -24,14 +24,14 @@ LensesExamples >> executeInProperty [
 	| aLenses aResult |
 	aLenses := self lensesWithInProperty.
 
-	aResult := aLenses execute: (LensesInitialJsonObject forObject: (Dictionary new
-				             at: 'body' put: 'This is a description';
-				             at: 'state' put: 'open';
-				             at: 'label' put: (Dictionary new
-						              at: 'id' put: 23434267;
-						              at: 'name' put: 'bug';
-						              yourself);
-				             yourself)).
+	aResult := aLenses execute: (Dictionary new
+			            at: 'body' put: 'This is a description';
+			            at: 'state' put: 'open';
+			            at: 'label' put: (Dictionary new
+					             at: 'id' put: 23434267;
+					             at: 'name' put: 'bug';
+					             yourself);
+			            yourself).
 
 	self assert: aResult output object size equals: 3.
 
@@ -59,11 +59,10 @@ LensesExamples >> executeTwoRenames [
 	| aLenses aResult |
 	aLenses := self lensesWithTwoRenames.
 
-	aResult := aLenses execute:
-		            (LensesInitialJsonObject forObject: (OrderedDictionary new
-				              at: 'body' put: 'This is a description';
-				              at: 'state' put: 'open';
-				              yourself)).
+	aResult := aLenses execute: (Dictionary new
+			            at: 'body' put: 'This is a description';
+			            at: 'state' put: 'open';
+			            yourself).
 
 	self assert: aResult output object size equals: 2.
 
@@ -77,12 +76,11 @@ LensesExamples >> executeTwoRenamesOneRemove [
 	| aLenses aResult |
 	aLenses := self lensesWithTwoRenamesOneRemove.
 
-	aResult := aLenses execute:
-		           (LensesInitialJsonObject forObject: (OrderedDictionary new
-				             at: 'body' put: 'This is a description';
-				             at: 'state' put: 'open';
-				             at: 'labels' put: {  };
-				             yourself)).
+	aResult := aLenses execute: (Dictionary new
+			            at: 'body' put: 'This is a description';
+			            at: 'state' put: 'open';
+			            at: 'labels' put: {  };
+			            yourself).
 
 	self assert: aResult output object size equals: 2.
 
@@ -96,12 +94,11 @@ LensesExamples >> executeTwoRenamesOneRemoveOneAdd [
 	| aLenses aResult |
 	aLenses := self lensesWithTwoRenamesOneRemoveOneAdd.
 
-	aResult := aLenses execute:
-		           (LensesInitialJsonObject forObject: (OrderedDictionary new
-				             at: 'body' put: 'This is a description';
-				             at: 'state' put: 'open';
-				             at: 'labels' put: { 'enhancement'. 'todo' };
-				             yourself)).
+	aResult := aLenses execute: (Dictionary new
+			            at: 'body' put: 'This is a description';
+			            at: 'state' put: 'open';
+			            at: 'labels' put: { 'enhancement'. 'todo' };
+			            yourself).
 
 	self assert: aResult output object size equals: 3.
 
