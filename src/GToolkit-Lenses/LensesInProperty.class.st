@@ -58,6 +58,14 @@ LensesInProperty >> name: anObject [
 	name := anObject
 ]
 
+{ #category : #'api - property' }
+LensesInProperty >> nextStepFrom: aPreviousStep [
+
+	^ LensesInStep new
+		  previousStep: aPreviousStep;
+		  property: self
+]
+
 { #category : #printing }
 LensesInProperty >> printOn: aStream [
 

@@ -69,7 +69,7 @@ LensesRenameExamples >> executor [
 LensesRenameExamples >> input [
 
 	<gtExample>
-	^ LensesJson forObject: (Dictionary new
+	^ LensesInitialJsonObject forObject: (Dictionary new
 			   at: 'body' put: 'I''m having a problem with this.';
 			   yourself)
 ]

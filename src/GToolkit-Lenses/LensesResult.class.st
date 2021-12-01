@@ -6,7 +6,7 @@ Class {
 	#instVars : [
 		'parentStep'
 	],
-	#category : #'GToolkit-Lenses-Executors'
+	#category : #'GToolkit-Lenses-Steps'
 }
 
 { #category : #printing }
@@ -15,13 +15,26 @@ LensesResult >> gtDisplayOn: stream [
 	stream nextPutAll: 'Result'
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - extensions' }
+LensesResult >> gtHistoryFor: aView [
+
+	<gtView>
+	^ aView columnedTree
+		  title: 'Steps';
+		  priority: 5;
+		  items: [ self withPreviousSteps ];
+		  children: #gtHistoryStepChildren;
+		  expandAll;
+		  column: 'Name' text: #yourself
+]
+
+{ #category : #'api - steps' }
 LensesResult >> input [
 
 	^ self initialInput
 ]
 
-{ #category : #accessing }
+{ #category : #'api - steps' }
 LensesResult >> output [
 
 	^ self parentStep output
@@ -39,9 +52,9 @@ LensesResult >> parentStep: anObject [
 	parentStep := anObject
 ]
 
-{ #category : #enumerating }
-LensesResult >> withParentsDo: aBlock [
+{ #category : #'api - steps' }
+LensesResult >> withPreviousStepsDo: aBlock [
 
-	self parentStep withParentsDo: aBlock.
+	self parentStep withPreviousStepsDo: aBlock.
 	aBlock cull: self
 ]

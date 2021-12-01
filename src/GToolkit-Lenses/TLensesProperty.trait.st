@@ -14,3 +14,11 @@ TLensesProperty >> gtLensesChildren [
 
 	^ #(  )
 ]
+
+{ #category : #'api - property' }
+TLensesProperty >> nextStepFrom: aPreviousStep [
+
+	^ LensesTransformationStep new
+		  previousStep: aPreviousStep;
+		  property: self
+]

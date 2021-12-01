@@ -14,7 +14,7 @@ LensesExecutor >> execute [
 	^ self input executor
 		  lenses: self lenses;
 		  execute;
-		  context
+		  step
 ]
 
 { #category : #accessing }

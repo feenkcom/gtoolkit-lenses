@@ -2,30 +2,18 @@ Class {
 	#name : #LensesJsonExecutor,
 	#superclass : #Object,
 	#instVars : [
-		'context',
-		'lenses'
+		'lenses',
+		'currentStep'
 	],
 	#category : #'GToolkit-Lenses-Executors'
 }
-
-{ #category : #accessing }
-LensesJsonExecutor >> context [
-
-	^ context
-]
-
-{ #category : #accessing }
-LensesJsonExecutor >> context: anObject [
-
-	context := anObject
-]
 
 { #category : #execution }
 LensesJsonExecutor >> execute [
 
 	self lenses accept: self.
 	
-	context := LensesResult new parentStep: context.
+	currentStep := LensesResult new parentStep: currentStep.
 ]
 
 { #category : #'gt - extensions' }
@@ -85,6 +73,18 @@ LensesJsonExecutor >> output [
 	^ self context output
 ]
 
+{ #category : #accessing }
+LensesJsonExecutor >> step [
+
+	^ currentStep
+]
+
+{ #category : #accessing }
+LensesJsonExecutor >> step: anObject [
+
+	currentStep := anObject
+]
+
 { #category : #visiting }
 LensesJsonExecutor >> visitLenses: aProperty [
 
@@ -108,50 +108,48 @@ LensesJsonExecutor >> visitLensesAddProperty: aProperty [
 { #category : #visiting }
 LensesJsonExecutor >> visitLensesInProperty: aProperty [
 
-	| aChildInputObject aChildInput aChildOutputObject aChildOutput |
-	aChildInputObject := self context input object at: aProperty name.
-	aChildOutputObject := self context output object at: aProperty name.
-	aChildInput := self context input asChildWith: aChildInputObject.
-	aChildOutput := self context output asChildWith: aChildOutputObject.
-	self context input: aChildInput.
-	self context output: aChildOutput.
+	| anInStep myChildren |
+	anInStep := self step beScopedOutput.
+	self visitManyProperties: aProperty lenses.
 
-	"somehow set child as input"
-	self visitManyProperties: aProperty lenses
-	"somehow unset the child as input"
+	myChildren := Array streamContents: [ :aStream | 
+		              | isInStep |
+		              isInStep := false.
+		              self step withPreviousStepsDo: [ :eachStep | 
+			              isInStep
+				              ifTrue: [ aStream nextPut: eachStep ]
+				              ifFalse: [ 
+				              eachStep == anInStep ifTrue: [ isInStep := true ] ] ] ].
+
+	anInStep children: myChildren.
+	anInStep beFullOutput.
+
+	currentStep := anInStep
 ]
 
 { #category : #visiting }
 LensesJsonExecutor >> visitLensesRemoveProperty: aProperty [
 
-	| anObject |
-	self assert: self context property == aProperty.
+	self assert: self step property == aProperty.
 
-	anObject := self context output object copy.
-	self context output object: anObject.
-
-	anObject
+	self step
 		at: aProperty name
-		ifPresent: [ :aValue | anObject removeKey: aProperty name ]
+		ifPresent: [ :aValue | self step removeKey: aProperty name ]
 		ifAbsent: [ "ignore" ]
 ]
 
 { #category : #visiting }
 LensesJsonExecutor >> visitLensesRenameProperty: aProperty [
 
-	| anObject |
-	self assert: self context property == aProperty.
+	self assert: self step property == aProperty.
 
-	anObject := self context output object copy.
-	self context output object: anObject.
-
-	anObject
+	self step
 		at: aProperty source
 		ifPresent: [ :aValue | 
-			anObject at: aProperty destination put: aValue.
-			anObject removeKey: aProperty source ]
+			self step at: aProperty destination put: aValue.
+			self step removeKey: aProperty source ]
 		ifAbsent: [ 
-		anObject at: aProperty destination put: aProperty defaultValue ]
+		self step at: aProperty destination put: aProperty defaultValue ]
 ]
 
 { #category : #visiting }
@@ -163,6 +161,6 @@ LensesJsonExecutor >> visitManyProperties: aCollection [
 { #category : #visiting }
 LensesJsonExecutor >> visitOneProperty: aProperty [
 
-	context := context forProperty: aProperty.
+	currentStep := aProperty nextStepFrom: currentStep.
 	aProperty accept: self.
 ]

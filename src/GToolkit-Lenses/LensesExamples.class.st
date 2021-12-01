@@ -24,7 +24,7 @@ LensesExamples >> executeInProperty [
 	| aLenses aResult |
 	aLenses := self lensesWithInProperty.
 
-	aResult := aLenses execute: (LensesJson forObject: (Dictionary new
+	aResult := aLenses execute: (LensesInitialJsonObject forObject: (Dictionary new
 				             at: 'body' put: 'This is a description';
 				             at: 'state' put: 'open';
 				             at: 'label' put: (Dictionary new
@@ -46,7 +46,7 @@ LensesExamples >> executeTwoRenames [
 	aLenses := self lensesWithTwoRenames.
 
 	aResult := aLenses execute:
-		            (LensesJson forObject: (OrderedDictionary new
+		            (LensesInitialJsonObject forObject: (OrderedDictionary new
 				              at: 'body' put: 'This is a description';
 				              at: 'state' put: 'open';
 				              yourself)).
@@ -64,7 +64,7 @@ LensesExamples >> executeTwoRenamesOneRemove [
 	aLenses := self lensesWithTwoRenamesOneRemove.
 
 	aResult := aLenses execute:
-		           (LensesJson forObject: (OrderedDictionary new
+		           (LensesInitialJsonObject forObject: (OrderedDictionary new
 				             at: 'body' put: 'This is a description';
 				             at: 'state' put: 'open';
 				             at: 'labels' put: {  };
@@ -83,7 +83,7 @@ LensesExamples >> executeTwoRenamesOneRemoveOneAdd [
 	aLenses := self lensesWithTwoRenamesOneRemoveOneAdd.
 
 	aResult := aLenses execute:
-		           (LensesJson forObject: (OrderedDictionary new
+		           (LensesInitialJsonObject forObject: (OrderedDictionary new
 				             at: 'body' put: 'This is a description';
 				             at: 'state' put: 'open';
 				             at: 'labels' put: { 'enhancement'. 'todo' };

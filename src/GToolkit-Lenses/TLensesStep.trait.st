@@ -1,7 +1,25 @@
 Trait {
 	#name : #TLensesStep,
-	#category : #'GToolkit-Lenses-Executors'
+	#category : #'GToolkit-Lenses-Steps'
 }
+
+{ #category : #'api - steps' }
+TLensesStep >> at: aKey ifPresent: aPresentBlock ifAbsent: anAbsentBlock [
+
+	self output at: aKey ifPresent: aPresentBlock ifAbsent: anAbsentBlock
+]
+
+{ #category : #'api - steps' }
+TLensesStep >> at: aKey put: aValue [
+
+	self output at: aKey put: aValue
+]
+
+{ #category : #'api - steps' }
+TLensesStep >> followingOutput [
+
+	^ self output asFollowingOutput
+]
 
 { #category : #'gt - extensions' }
 TLensesStep >> gtHistoryFor: aView [
@@ -10,8 +28,14 @@ TLensesStep >> gtHistoryFor: aView [
 	^ aView columnedList
 		  title: 'Changes';
 		  priority: 5;
-		  items: [ self withParents ];
+		  items: [ self withPreviousSteps ];
 		  column: 'Name' text: #yourself
+]
+
+{ #category : #'gt - extensions' }
+TLensesStep >> gtHistoryStepChildren [
+
+	^ #(  )
 ]
 
 { #category : #'gt - extensions' }
@@ -40,42 +64,48 @@ TLensesStep >> gtOutputFor: aView [
 		  view: #gtLiveFor:
 ]
 
-{ #category : #enumerating }
+{ #category : #'api - steps' }
 TLensesStep >> initialInput [
 
-	self withParentsDo: [ :aParent | ^ aParent input ].
+	self withPreviousStepsDo: [ :aParent | ^ aParent input ].
 ]
 
-{ #category : #accessing }
+{ #category : #'api - steps' }
 TLensesStep >> input [
 
 	^ self explicitRequirement
 ]
 
-{ #category : #accessing }
+{ #category : #'api - steps' }
 TLensesStep >> output [
 
 	^ self explicitRequirement
 ]
 
-{ #category : #enumerating }
-TLensesStep >> withParents [
+{ #category : #'api - steps' }
+TLensesStep >> removeKey: aKey [
 
-	^ Array new: self withParentsCount streamContents: [ :aStream | 
-		  self withParentsDo: [ :aParent | aStream nextPut: aParent ] ]
+	self output removeKey: aKey
 ]
 
-{ #category : #enumerating }
-TLensesStep >> withParentsCount [
+{ #category : #'api - steps' }
+TLensesStep >> withPreviousSteps [
+
+	^ Array new: self withPreviousStepsCount streamContents: [ :aStream | 
+		  self withPreviousStepsDo: [ :aParent | aStream nextPut: aParent ] ]
+]
+
+{ #category : #'api - steps' }
+TLensesStep >> withPreviousStepsCount [
 
 	| aCount |
 	aCount := 0.
-	self withParentsDo: [ aCount := aCount + 1 ].
+	self withPreviousStepsDo: [ aCount := aCount + 1 ].
 	^ aCount
 ]
 
-{ #category : #enumerating }
-TLensesStep >> withParentsDo: aBlock [
+{ #category : #'api - steps' }
+TLensesStep >> withPreviousStepsDo: aBlock [
 
 	self explicitRequirement
 ]
