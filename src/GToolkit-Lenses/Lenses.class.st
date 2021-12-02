@@ -4,7 +4,7 @@ Class {
 	#traits : 'TLensesProperty',
 	#classTraits : 'TLensesProperty classTrait',
 	#instVars : [
-		'name',
+		'schemaName',
 		'lenses'
 	],
 	#category : #'GToolkit-Lenses-Core'
@@ -14,6 +14,10 @@ Class {
 Lenses >> accept: aVisitor [
 
 	^ aVisitor visitLenses: self
+]
+
+{ #category : #accessing }
+Lenses >> asJsonObject [
 ]
 
 { #category : #execution }
@@ -51,13 +55,25 @@ Lenses >> lenses: anObject [
 { #category : #accessing }
 Lenses >> name [
 
-	^ name ifNil: [ '' ]
+	^ self schemaName ifNil: [ '' ]
 ]
 
 { #category : #accessing }
-Lenses >> name: anObject [
+Lenses >> name: aString [
 
-	name := anObject
+	self schemaName: aString
+]
+
+{ #category : #accessing }
+Lenses >> schemaName [
+
+	^ schemaName
+]
+
+{ #category : #accessing }
+Lenses >> schemaName: aString [
+
+	schemaName := aString
 ]
 
 { #category : #execution }

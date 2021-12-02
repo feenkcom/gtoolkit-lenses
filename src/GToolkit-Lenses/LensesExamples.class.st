@@ -112,6 +112,7 @@ LensesExamples >> lensesForIssueTracker [
 	| aLenses |
 	aLenses := self basicLenses.
 
+	aLenses name: 'Issue Tracker'.
 	aLenses lenses: { 
 			(LensesRenameProperty new
 				 source: 'body';
