@@ -87,7 +87,7 @@ LensesExamples >> executeTwoRenamesOneRemove [
 	^ aResult
 ]
 
-{ #category : #accessing }
+{ #category : #'examples - lenses' }
 LensesExamples >> executeTwoRenamesOneRemoveOneAdd [
 
 	<gtExample>
@@ -105,7 +105,7 @@ LensesExamples >> executeTwoRenamesOneRemoveOneAdd [
 	^ aResult
 ]
 
-{ #category : #accessing }
+{ #category : #'examples - lenses' }
 LensesExamples >> lensesForIssueTracker [
 
 	<gtExample>
@@ -132,7 +132,7 @@ LensesExamples >> lensesForIssueTracker [
 	^ aLenses
 ]
 
-{ #category : #accessing }
+{ #category : #'examples - lenses' }
 LensesExamples >> lensesWithInProperty [
 
 	<gtExample>
@@ -249,4 +249,34 @@ LensesExamples >> originalIssueTrackerJsonString [
       }
     ]
   }'
+]
+
+{ #category : #'examples - json' }
+LensesExamples >> parseIssueTrackerJsonString [
+
+	<gtExample>
+	| aLenses aString |
+	aString := self writeIssueTrackerJsonString.
+
+	aLenses := LensesJsonReader fromString: aString.
+
+	self assert: aLenses isNotNil.
+	self assert: aLenses class equals: Lenses.
+
+	^ aLenses
+]
+
+{ #category : #'examples - json' }
+LensesExamples >> writeIssueTrackerJsonString [
+
+	<gtExample>
+	| aLenses aString |
+	aLenses := self lensesForIssueTracker.
+	aString := aLenses asJsonString.
+	
+	self assert: aString isString.
+	self assert: aString isNotEmpty.
+	
+	^ aString
+	
 ]

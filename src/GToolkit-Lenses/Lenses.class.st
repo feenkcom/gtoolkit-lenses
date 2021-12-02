@@ -10,6 +10,14 @@ Class {
 	#category : #'GToolkit-Lenses-Core'
 }
 
+{ #category : #converting }
+Lenses class >> jsonMappingV1Asociations [
+
+	^ { 
+		  ('schemaName' -> nil).
+		  ('lenses' -> { TLensesProperty }) }
+]
+
 { #category : #visiting }
 Lenses >> accept: aVisitor [
 

@@ -45,10 +45,7 @@ LensesJsonWriter >> writeOn: aStream [
 	aWriter := NeoJSONWriter on: aStream.
 	aWriter prettyPrint: self prettyPrint.
 
-	"define mappings"
-	TLensesProperty users do: [ :eachUser | 
-		eachUser isClass ifTrue: [ 
-			eachUser instanceSide jsonMappingV1On: aWriter ] ].
+	LensesJsonUtility commonMappingsFor: aWriter.
 
 	^ aWriter nextPut: self lenses
 ]
