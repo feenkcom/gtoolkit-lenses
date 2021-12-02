@@ -25,30 +25,6 @@ LensesJsonReader >> lenses [
 	^ lenses
 ]
 
-{ #category : #private }
-LensesJsonReader >> readLensesRoot: aReader [
-
-	| aLenseType aClass aLens |
-	aReader parseMapKeysDo: [ :aKey | 
-		aKey = 'type' ifTrue: [ 
-			aLenseType := aReader parseValue.
-			aClass := TLensesProperty users
-				          detect: [ :eachClass | 
-					          eachClass isClass and: [ 
-						          eachClass jsonMappingV1Name = aLenseType ] ]
-				          ifNone: [ 
-				          self error: ('Unknown lense type: {1}' format: aKey) ] ].
-		aKey = 'content' ifTrue: [ 
-			self halt.
-			aClass ifNil: [ 
-				self error: 'Type key must be defined first, then a content' ].
-			aLens := aReader nextAs: aLenseType , 'Content' ] ].
-
-	aLens ifNil: [ self error: 'Could not parse root lens' ].
-self halt.
-	^ aLens
-]
-
 { #category : #reading }
 LensesJsonReader >> readOn: aStream [
 
