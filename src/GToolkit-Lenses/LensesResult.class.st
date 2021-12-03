@@ -28,6 +28,68 @@ LensesResult >> gtHistoryFor: aView [
 		  column: 'Name' text: #yourself
 ]
 
+{ #category : #'gt - extensions' }
+LensesResult >> gtStepsInputAndOutputViewFor: aView [
+
+	<gtView>
+	^ aView explicit
+		  title: 'Result';
+		  priority: 0;
+		  stencil: [ 
+			  | aSteps anInput anOutput |
+			  aSteps := GtInspector
+				            forObject: self
+				            viewSelector: #gtHistoryFor:.
+			  aSteps constraintsDo: [ :c | c linear weight: 0.5 ].
+			  aSteps border:
+					  (BlBorder
+						   paint: BrGlamorousColors disabledButtonBorderColor
+						   width: 1).
+			  aSteps when: GtPhlowObjectToSpawn do: [ :anEvent | 
+					  anEvent consumed: true.
+					  NonInteractiveTranscript stdout
+						  show: anEvent;
+						  cr.
+					  anInput
+						  object: anEvent object
+						  viewSelector: #gtInputFor:.
+					  anOutput
+						  object: anEvent object
+						  viewSelector: #gtOutputFor: ].
+			  aSteps when: GtPhlowObjectToSelect do: [ :anEvent | 
+				  anEvent consumed: true.
+				  anInput
+					  object: anEvent object
+					  viewSelector: #gtInputFor:.
+				  anOutput
+					  object: anEvent object
+					  viewSelector: #gtOutputFor: ].
+
+			  anInput := GtInspector
+				             forObject: self
+				             viewSelector: #gtInputFor:.
+			  anInput border:
+				  (BlBorder
+					   paint: BrGlamorousColors disabledButtonBorderColor
+					   width: 1).
+			  anInput margin: (BlInsets left: 10 right: 10).
+
+			  anOutput := GtInspector
+				              forObject: self
+				              viewSelector: #gtOutputFor:.
+			  anOutput border:
+				  (BlBorder
+					   paint: BrGlamorousColors disabledButtonBorderColor
+					   width: 1).
+
+			  BrHorizontalPane new
+				  padding: (BlInsets all: 10);
+				  matchParent;
+				  addChild: aSteps;
+				  addChild: anInput;
+				  addChild: anOutput ]
+]
+
 { #category : #'api - steps' }
 LensesResult >> input [
 
