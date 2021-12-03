@@ -51,23 +51,29 @@ TLensesJsonObjectAccess >> at: aKey put: aValue [
 		('Unknown JSON object: {1}' format: self object printString)
 ]
 
-{ #category : #'gt - extensions' }
-TLensesJsonObjectAccess >> gtJsonFor: aView [
+{ #category : #accessing }
+TLensesJsonObjectAccess >> gtJsonFor: aView context: aContext [
 
 	<gtView>
 	self object ifNil: [ ^ aView empty ].
+
+	aContext at: #gtTreeExpansionLevel ifAbsentPut: [ true ].
 
 	^ aView forward
 		  title: 'JSON';
 		  priority: 1;
 		  object: [ self object ];
-		  view: #gtTreeFor:
+		  view: #gtTreeFor:context:
 ]
 
 { #category : #'gt - extensions' }
 TLensesJsonObjectAccess >> gtLiveFor: aView [
 
-	^ self gtJsonFor: aView
+	^ aView forward
+		  title: 'JSON';
+		  priority: 1;
+		  object: [ self ];
+		  view: #gtJsonFor:context:
 ]
 
 { #category : #'api - json' }

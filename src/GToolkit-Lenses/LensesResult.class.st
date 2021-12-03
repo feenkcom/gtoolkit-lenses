@@ -25,7 +25,7 @@ LensesResult >> gtHistoryFor: aView [
 		  items: [ self withPreviousSteps ];
 		  children: #gtHistoryStepChildren;
 		  expandAll;
-		  column: 'Name' text: #yourself
+		  column: 'Steps' text: #yourself
 ]
 
 { #category : #'gt - extensions' }
@@ -52,7 +52,7 @@ LensesResult >> gtStepsInputAndOutputViewFor: aView [
 						  cr.
 					  anInput
 						  object: anEvent object
-						  viewSelector: #gtInputFor:.
+						  viewSelector: #gtInputFor:context:.
 					  anOutput
 						  object: anEvent object
 						  viewSelector: #gtOutputFor: ].
@@ -60,14 +60,14 @@ LensesResult >> gtStepsInputAndOutputViewFor: aView [
 				  anEvent consumed: true.
 				  anInput
 					  object: anEvent object
-					  viewSelector: #gtInputFor:.
+					  viewSelector: #gtInputFor:context:.
 				  anOutput
 					  object: anEvent object
 					  viewSelector: #gtOutputFor: ].
 
 			  anInput := GtInspector
 				             forObject: self
-				             viewSelector: #gtInputFor:.
+				             viewSelector: #gtInputFor:context:.
 			  anInput border:
 				  (BlBorder
 					   paint: BrGlamorousColors disabledButtonBorderColor

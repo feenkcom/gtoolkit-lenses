@@ -38,8 +38,8 @@ TLensesStep >> gtHistoryStepChildren [
 	^ #(  )
 ]
 
-{ #category : #'gt - extensions' }
-TLensesStep >> gtInputFor: aView [
+{ #category : #accessing }
+TLensesStep >> gtInputFor: aView context: aContext [
 
 	<gtView>
 	self input ifNil: [ ^ aView empty ].
