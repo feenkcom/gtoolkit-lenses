@@ -1,35 +1,35 @@
 Class {
-	#name : #LensesRenameProperty,
+	#name : #LensesRenameLens,
 	#superclass : #Object,
-	#traits : 'TLensesProperty',
-	#classTraits : 'TLensesProperty classTrait',
+	#traits : 'TLenses',
+	#classTraits : 'TLenses classTrait',
 	#instVars : [
 		'source',
 		'destination'
 	],
-	#category : #'GToolkit-Lenses-Properties'
+	#category : #'GToolkit-Lenses-Lenses'
 }
 
 { #category : #visiting }
-LensesRenameProperty >> accept: aVisitor [
+LensesRenameLens >> accept: aVisitor [
 
-	^ aVisitor visitLensesRenameProperty: self
+	^ aVisitor visitLensesRenameLens: self
 ]
 
 { #category : #accessing }
-LensesRenameProperty >> destination [
+LensesRenameLens >> destination [
 
 	^ destination
 ]
 
 { #category : #accessing }
-LensesRenameProperty >> destination: anObject [
+LensesRenameLens >> destination: anObject [
 
 	destination := anObject
 ]
 
 { #category : #printing }
-LensesRenameProperty >> gtDisplayOn: aStream [
+LensesRenameLens >> gtDisplayOn: aStream [
 
 	self source ifNil: [ 
 		super gtDisplayOn: aStream.
@@ -46,7 +46,7 @@ LensesRenameProperty >> gtDisplayOn: aStream [
 ]
 
 { #category : #'gt - extensions' }
-LensesRenameProperty >> gtHistoryStepItemDisplayText [
+LensesRenameLens >> gtHistoryStepItemDisplayText [
 
 	| aText aSource aDestination |
 	self source ifNil: [ ^ self gtDisplayString ].
@@ -65,7 +65,7 @@ LensesRenameProperty >> gtHistoryStepItemDisplayText [
 ]
 
 { #category : #printing }
-LensesRenameProperty >> printOn: aStream [
+LensesRenameLens >> printOn: aStream [
 
 	super printOn: aStream.
 
@@ -81,13 +81,13 @@ LensesRenameProperty >> printOn: aStream [
 ]
 
 { #category : #accessing }
-LensesRenameProperty >> source [
+LensesRenameLens >> source [
 
 	^ source
 ]
 
 { #category : #accessing }
-LensesRenameProperty >> source: anObject [
+LensesRenameLens >> source: anObject [
 
 	source := anObject
 ]

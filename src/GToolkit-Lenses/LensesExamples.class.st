@@ -114,18 +114,18 @@ LensesExamples >> lensesForIssueTracker [
 
 	aLenses name: 'Issue Tracker'.
 	aLenses lenses: { 
-			(LensesRenameProperty new
+			(LensesRenameLens new
 				 source: 'body';
 				 destination: 'description').
-			(LensesRenameProperty new
+			(LensesRenameLens new
 				 source: 'state';
 				 destination: 'status').
-			(LensesInProperty new
+			(LensesInLens new
 				 name: 'labels';
-				 lenses: { (LensesRenameProperty new
+				 lenses: { (LensesRenameLens new
 						  source: 'name';
 						  destination: 'category') }).
-			(LensesRemoveProperty new name: 'labels') }.
+			(LensesRemoveLens new name: 'labels') }.
 
 	self assert: aLenses lenses size equals: 4.
 
@@ -139,13 +139,13 @@ LensesExamples >> lensesWithInProperty [
 	| aLenses |
 	aLenses := self basicLenses.
 
-	aLenses lenses: { (LensesInProperty new
+	aLenses lenses: { (LensesInLens new
 			 name: 'label';
 			 lenses: { 
-					 (LensesRenameProperty new
+					 (LensesRenameLens new
 						  source: 'name';
 						  destination: 'category').
-					 (LensesRemoveProperty new name: 'id') }) }.
+					 (LensesRemoveLens new name: 'id') }) }.
 
 	self assert: aLenses lenses size equals: 1.
 	self assert: aLenses lenses first lenses size equals: 2.
@@ -161,10 +161,10 @@ LensesExamples >> lensesWithTwoRenames [
 	aLenses := Lenses new.
 
 	aLenses lenses: { 
-			(LensesRenameProperty new
+			(LensesRenameLens new
 				 source: 'body';
 				 destination: 'description').
-			(LensesRenameProperty new
+			(LensesRenameLens new
 				 source: 'state';
 				 destination: 'status') }.
 
@@ -181,13 +181,13 @@ LensesExamples >> lensesWithTwoRenamesOneRemove [
 	aLenses := self basicLenses.
 
 	aLenses lenses: { 
-			(LensesRenameProperty new
+			(LensesRenameLens new
 				 source: 'body';
 				 destination: 'description').
-			(LensesRenameProperty new
+			(LensesRenameLens new
 				 source: 'state';
 				 destination: 'status').
-			(LensesRemoveProperty new 
+			(LensesRemoveLens new 
 				 name: 'labels') }.
 
 	self assert: aLenses lenses size equals: 3.
@@ -203,15 +203,15 @@ LensesExamples >> lensesWithTwoRenamesOneRemoveOneAdd [
 	aLenses := self basicLenses.
 
 	aLenses lenses: { 
-			(LensesRenameProperty new
+			(LensesRenameLens new
 				 source: 'body';
 				 destination: 'description').
-			(LensesRenameProperty new
+			(LensesRenameLens new
 				 source: 'state';
 				 destination: 'status').
-			(LensesRemoveProperty new 
+			(LensesRemoveLens new 
 				 name: 'labels').
-			(LensesAddProperty new
+			(LensesAddLens new
 				 name: 'options';
 				 value: #(  )) }.
 

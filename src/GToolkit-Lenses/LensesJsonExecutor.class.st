@@ -86,26 +86,26 @@ LensesJsonExecutor >> step: anObject [
 ]
 
 { #category : #visiting }
-LensesJsonExecutor >> visitLenses: aProperty [
+LensesJsonExecutor >> visitLenses: aLenses [
 
-	self visitManyProperties: aProperty lenses
+	self visitManyLenses: aLenses lenses
 ]
 
 { #category : #visiting }
-LensesJsonExecutor >> visitLensesAddProperty: aProperty [
+LensesJsonExecutor >> visitLensesAddLens: aLens [
 
 	| anObject |
-	self assert: self step property == aProperty.
+	self assert: self step lens == aLens.
 
-	self step at: aProperty name put: (aProperty value)
+	self step at: aLens name put: (aLens value)
 ]
 
 { #category : #visiting }
-LensesJsonExecutor >> visitLensesInProperty: aProperty [
+LensesJsonExecutor >> visitLensesInLens: aLens [
 
 	| anInStep myChildren |
 	anInStep := self step beScopedOutput.
-	self visitManyProperties: aProperty lenses.
+	self visitManyLenses: aLens lenses.
 
 	myChildren := Array streamContents: [ :aStream | 
 		              | isInStep |
@@ -123,39 +123,39 @@ LensesJsonExecutor >> visitLensesInProperty: aProperty [
 ]
 
 { #category : #visiting }
-LensesJsonExecutor >> visitLensesRemoveProperty: aProperty [
+LensesJsonExecutor >> visitLensesRemoveLens: aLens [
 
-	self assert: self step property == aProperty.
+	self assert: self step lens == aLens.
 
 	self step
-		at: aProperty name
-		ifPresent: [ :aValue | self step removeKey: aProperty name ]
+		at: aLens name
+		ifPresent: [ :aValue | self step removeKey: aLens name ]
 		ifAbsent: [ "ignore" ]
 ]
 
 { #category : #visiting }
-LensesJsonExecutor >> visitLensesRenameProperty: aProperty [
+LensesJsonExecutor >> visitLensesRenameLens: aLens [
 
-	self assert: self step property == aProperty.
+	self assert: self step lens == aLens.
 
 	self step
-		at: aProperty source
+		at: aLens source
 		ifPresent: [ :aValue | 
-			self step at: aProperty destination put: aValue.
-			self step removeKey: aProperty source ]
+			self step at: aLens destination put: aValue.
+			self step removeKey: aLens source ]
 		ifAbsent: [ 
-		self step at: aProperty destination put: aProperty defaultValue ]
+		self step at: aLens destination put: aLens defaultValue ]
 ]
 
 { #category : #visiting }
-LensesJsonExecutor >> visitManyProperties: aCollection [
+LensesJsonExecutor >> visitManyLenses: aCollection [
 
-	aCollection do: [ :eachProperty | self visitOneProperty: eachProperty ]
+	aCollection do: [ :eachProperty | self visitOneLens: eachProperty ]
 ]
 
 { #category : #visiting }
-LensesJsonExecutor >> visitOneProperty: aProperty [
+LensesJsonExecutor >> visitOneLens: aLens [
 
-	currentStep := aProperty nextStepFrom: currentStep.
-	aProperty accept: self.
+	currentStep := aLens nextStepFrom: currentStep.
+	aLens accept: self.
 ]

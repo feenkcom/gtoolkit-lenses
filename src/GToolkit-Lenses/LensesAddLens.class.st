@@ -1,23 +1,23 @@
 Class {
-	#name : #LensesAddProperty,
+	#name : #LensesAddLens,
 	#superclass : #Object,
-	#traits : 'TLensesProperty',
-	#classTraits : 'TLensesProperty classTrait',
+	#traits : 'TLenses',
+	#classTraits : 'TLenses classTrait',
 	#instVars : [
 		'name',
 		'value'
 	],
-	#category : #'GToolkit-Lenses-Properties'
+	#category : #'GToolkit-Lenses-Lenses'
 }
 
 { #category : #visiting }
-LensesAddProperty >> accept: aVisitor [
+LensesAddLens >> accept: aVisitor [
 
-	^ aVisitor visitLensesAddProperty: self
+	^ aVisitor visitLensesAddLens: self
 ]
 
 { #category : #printing }
-LensesAddProperty >> gtDisplayOn: aStream [
+LensesAddLens >> gtDisplayOn: aStream [
 
 	self name ifNil: [ 
 		super gtDisplayOn: aStream.
@@ -31,7 +31,7 @@ LensesAddProperty >> gtDisplayOn: aStream [
 ]
 
 { #category : #'gt - extensions' }
-LensesAddProperty >> gtHistoryStepItemDisplayText [
+LensesAddLens >> gtHistoryStepItemDisplayText [
 
 	| aText aName |
 	self name ifNil: [ ^ self gtDisplayString ].
@@ -45,19 +45,19 @@ LensesAddProperty >> gtHistoryStepItemDisplayText [
 ]
 
 { #category : #accessing }
-LensesAddProperty >> name [
+LensesAddLens >> name [
 
 	^ name
 ]
 
 { #category : #accessing }
-LensesAddProperty >> name: anObject [
+LensesAddLens >> name: anObject [
 
 	name := anObject
 ]
 
 { #category : #printing }
-LensesAddProperty >> printOn: aStream [
+LensesAddLens >> printOn: aStream [
 
 	super printOn: aStream.
 
@@ -72,13 +72,13 @@ LensesAddProperty >> printOn: aStream [
 ]
 
 { #category : #accessing }
-LensesAddProperty >> value [
+LensesAddLens >> value [
 
 	^ value
 ]
 
 { #category : #accessing }
-LensesAddProperty >> value: anObject [
+LensesAddLens >> value: anObject [
 
 	value := anObject
 ]

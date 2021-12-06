@@ -18,7 +18,7 @@ LensesJsonUtility class >> commonMappingsFor: aMapper [
 		mapping reader: [ :aReader | 
 			self parsePropertyCollectionOn: aReader ] ].
 
-	TLensesProperty users do: [ :eachUser | 
+	TLenses users do: [ :eachUser | 
 		eachUser isClass ifTrue: [ 
 			eachUser instanceSide jsonMappingV1On: aMapper ] ]
 ]
@@ -70,7 +70,7 @@ LensesJsonUtility class >> parseMetaPropertyOn: aReader [
 	aReader parseMapKeysDo: [ :aKey | 
 		aKey = 'type' ifTrue: [ 
 			aLenseType := aReader parseValue.
-			aClass := TLensesProperty users
+			aClass := TLenses users
 				          detect: [ :eachClass | 
 					          eachClass isClass and: [ 
 						          (eachClass jsonMappingV1Name ifNil: [ 
@@ -133,7 +133,7 @@ LensesJsonUtility class >> parsePropertyField: anAssoc on: aReader [
 	aValueSchema isCollection ifTrue: [ 
 		^ aReader nextAs: LensesJsonPropertyCollection ].
 
-	aValueSchema = TLensesProperty ifTrue: [ 
+	aValueSchema = TLenses ifTrue: [ 
 		^ aReader nextAs: LensesJsonMetaProperty ].
 
 	self error: ('Unknown "{1}" field schema: {2}' format: { 
@@ -178,7 +178,7 @@ LensesJsonUtility class >> writeProperty: aProperty field: anAssoc on: mapWriter
 			as: LensesJsonPropertyCollection.
 		^ self ].
 
-	aValueSchema = TLensesProperty ifTrue: [ 
+	aValueSchema = TLenses ifTrue: [ 
 		mapWriter
 			writeKey: aValueName
 			value:

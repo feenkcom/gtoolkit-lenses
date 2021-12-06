@@ -1,10 +1,10 @@
 Trait {
-	#name : #TLensesProperty,
-	#category : #'GToolkit-Lenses-Properties'
+	#name : #TLenses,
+	#category : #'GToolkit-Lenses-Lenses'
 }
 
 { #category : #converting }
-TLensesProperty classSide >> jsonMappingV1Asociations [
+TLenses classSide >> jsonMappingV1Asociations [
 
 	"Return a collection of 'instance variable name' -> 'schema name'.
 	Instance variable name is a string.
@@ -14,32 +14,32 @@ TLensesProperty classSide >> jsonMappingV1Asociations [
 ]
 
 { #category : #converting }
-TLensesProperty classSide >> jsonMappingV1Name [
+TLenses classSide >> jsonMappingV1Name [
 	"Use a default name computed by {{gtMethod:LensesJsonUtility class>>#jsonMappingV1PropertyNameFor:}}"
 
 	^ nil
 ]
 
 { #category : #converting }
-TLensesProperty classSide >> jsonMappingV1On: aNeoJSONMapper [
+TLenses classSide >> jsonMappingV1On: aNeoJSONMapper [
 
 	LensesJsonUtility jsonMappingV1For: self on: aNeoJSONMapper
 ]
 
 { #category : #converting }
-TLensesProperty classSide >> neoJsonMapping: aNeoJSONMapper [
+TLenses classSide >> neoJsonMapping: aNeoJSONMapper [
 
 	self jsonMappingV1On: aNeoJSONMapper
 ]
 
 { #category : #visiting }
-TLensesProperty >> accept: aVisitor [
+TLenses >> accept: aVisitor [
 
 	^ self explicitRequirement
 ]
 
 { #category : #converting }
-TLensesProperty >> asJsonString [
+TLenses >> asJsonString [
 
 	^ LensesJsonWriter new
 		  lenses: (LensesJsonMetaProperty new property: self);
@@ -47,22 +47,22 @@ TLensesProperty >> asJsonString [
 ]
 
 { #category : #'gt - extensions' }
-TLensesProperty >> gtHistoryStepItemDisplayText [
+TLenses >> gtHistoryStepItemDisplayText [
 
 	^ self gtDisplayString
 ]
 
 { #category : #'gt - extensions' }
-TLensesProperty >> gtLensesChildren [
+TLenses >> gtLensesChildren [
 
 	^ #(  )
 ]
 
 { #category : #'api - property' }
-TLensesProperty >> nextStepFrom: aPreviousStep [
+TLenses >> nextStepFrom: aPreviousStep [
 
 	^ LensesTransformationStep new
 		  previousStep: aPreviousStep;
-		  property: self;
+		  lens: self;
 		  input: aPreviousStep output.
 ]

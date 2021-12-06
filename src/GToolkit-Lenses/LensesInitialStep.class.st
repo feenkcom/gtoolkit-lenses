@@ -9,16 +9,6 @@ Class {
 	#category : #'GToolkit-Lenses-Steps'
 }
 
-{ #category : #stack }
-LensesInitialStep >> forProperty: aProperty [
-
-	^ LensesTransformationStep new
-		  parentStep: self;
-		  property: aProperty;
-		  input: self input;
-		  output: self input asOutput
-]
-
 { #category : #printing }
 LensesInitialStep >> gtDisplayOn: stream [
 

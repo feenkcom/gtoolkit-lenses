@@ -4,14 +4,14 @@ Class {
 	#traits : 'TLensesStep',
 	#classTraits : 'TLensesStep classTrait',
 	#instVars : [
-		'property',
 		'scopedOutput',
 		'fullOutput',
 		'previousStep',
 		'isScopedOutput',
 		'childrenSteps',
 		'output',
-		'input'
+		'input',
+		'lens'
 	],
 	#category : #'GToolkit-Lenses-Steps'
 }
@@ -70,24 +70,24 @@ LensesInStep >> computeFullOutput [
 	| aNewOutput |
 	aNewOutput := self previousStep followingOutput.
 	aNewOutput
-		at: self property name
+		at: self lens name
 		ifPresent: [ :aChild | 
-			aNewOutput at: self property name put: aChild copy.
+			aNewOutput at: self lens name put: aChild copy.
 			fullOutput := aNewOutput ]
 		ifAbsent: [ 
 			self error:
-				('Child object named {1} is missing' format: self property name) ]
+				('Child object named {1} is missing' format: self lens name) ]
 ]
 
 { #category : #private }
 LensesInStep >> computeScopedOutput [
 
 	self fullOutput
-		at: self property name
+		at: self lens name
 		ifPresent: [ :aChild | scopedOutput := LensesScopedJsonObject new object: aChild ]
 		ifAbsent: [ 
 			self error:
-				('Child object named {1} is missing' format: self property name) ]
+				('Child object named {1} is missing' format: self lens name) ]
 ]
 
 { #category : #private }
@@ -100,11 +100,11 @@ LensesInStep >> fullOutput [
 { #category : #printing }
 LensesInStep >> gtDisplayOn: stream [
 
-	self property ifNil: [ 
+	self lens ifNil: [ 
 		super gtDisplayOn: stream.
 		^ self ].
 
-	self property gtDisplayOn: stream
+	self lens gtDisplayOn: stream
 ]
 
 { #category : #'gt - extensions' }
@@ -116,9 +116,9 @@ LensesInStep >> gtHistoryStepChildren [
 { #category : #'gt - extensions' }
 LensesInStep >> gtHistoryStepItemDisplayText [
 
-	self property ifNil: [ ^ self gtDisplayString ].
+	self lens ifNil: [ ^ self gtDisplayString ].
 
-	^ self property gtHistoryStepItemDisplayText
+	^ self lens gtHistoryStepItemDisplayText
 ]
 
 { #category : #initialization }
@@ -147,6 +147,18 @@ LensesInStep >> isScopedOutput [
 	^ isScopedOutput
 ]
 
+{ #category : #accessing }
+LensesInStep >> lens [
+
+	^ lens
+]
+
+{ #category : #accessing }
+LensesInStep >> lens: anObject [
+
+	lens := anObject
+]
+
 { #category : #'api - steps' }
 LensesInStep >> output [
 
@@ -165,18 +177,6 @@ LensesInStep >> previousStep [
 LensesInStep >> previousStep: anObject [
 
 	previousStep := anObject
-]
-
-{ #category : #accessing }
-LensesInStep >> property [
-
-	^ property
-]
-
-{ #category : #accessing }
-LensesInStep >> property: anObject [
-
-	property := anObject
 ]
 
 { #category : #'api - steps' }
@@ -204,14 +204,14 @@ LensesInStep >> updateFullOutput [
 	self children ifEmpty: [ ^ self ].
 
 	self fullOutput
-		at: self property name
+		at: self lens name
 		ifPresent: [ :aChild | 
 			| aLastStep |
 			aLastStep := self children last.
-			self fullOutput at: self property name put: aLastStep output object ]
+			self fullOutput at: self lens name put: aLastStep output object ]
 		ifAbsent: [ 
 			self error:
-				('Child object named {1} is missing' format: self property name) ]
+				('Child object named {1} is missing' format: self lens name) ]
 ]
 
 { #category : #'api - steps' }

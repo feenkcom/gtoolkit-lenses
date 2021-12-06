@@ -4,40 +4,30 @@ Class {
 	#traits : 'TLensesStep',
 	#classTraits : 'TLensesStep classTrait',
 	#instVars : [
-		'property',
 		'output',
 		'previousStep',
-		'input'
+		'input',
+		'lens'
 	],
 	#category : #'GToolkit-Lenses-Steps'
 }
 
-{ #category : #stack }
-LensesTransformationStep >> forProperty: aProperty [
-
-	^ LensesTransformationStep new
-		  parentStep: self;
-		  property: aProperty;
-		  input: self output;
-		  output: self output asOutput
-]
-
 { #category : #printing }
 LensesTransformationStep >> gtDisplayOn: stream [
 
-	self property ifNil: [ 
+	self lens ifNil: [ 
 		super gtDisplayOn: stream.
 		^ self ].
 
-	self property gtDisplayOn: stream
+	self lens gtDisplayOn: stream
 ]
 
 { #category : #'gt - extensions' }
 LensesTransformationStep >> gtHistoryStepItemDisplayText [
 
-	self property ifNil: [ ^ self gtDisplayString ].
+	self lens ifNil: [ ^ self gtDisplayString ].
 
-	^ self property gtHistoryStepItemDisplayText
+	^ self lens gtHistoryStepItemDisplayText
 ]
 
 { #category : #'api - steps' }
@@ -50,6 +40,18 @@ LensesTransformationStep >> input [
 LensesTransformationStep >> input: anObject [
 
 	input := anObject
+]
+
+{ #category : #accessing }
+LensesTransformationStep >> lens [
+
+	^ lens
+]
+
+{ #category : #accessing }
+LensesTransformationStep >> lens: aLens [
+
+	lens := aLens
 ]
 
 { #category : #'api - steps' }
@@ -74,18 +76,6 @@ LensesTransformationStep >> previousStep [
 LensesTransformationStep >> previousStep: anObject [
 
 	previousStep := anObject
-]
-
-{ #category : #accessing }
-LensesTransformationStep >> property [
-
-	^ property
-]
-
-{ #category : #accessing }
-LensesTransformationStep >> property: anObject [
-
-	property := anObject
 ]
 
 { #category : #'api - steps' }

@@ -1,31 +1,31 @@
 Class {
-	#name : #LensesInProperty,
+	#name : #LensesInLens,
 	#superclass : #Object,
-	#traits : 'TLensesProperty',
-	#classTraits : 'TLensesProperty classTrait',
+	#traits : 'TLenses',
+	#classTraits : 'TLenses classTrait',
 	#instVars : [
 		'name',
 		'lenses'
 	],
-	#category : #'GToolkit-Lenses-Properties'
+	#category : #'GToolkit-Lenses-Lenses'
 }
 
 { #category : #converting }
-LensesInProperty class >> jsonMappingV1Asociations [
+LensesInLens class >> jsonMappingV1Asociations [
 
 	^ { 
 		  ('name' -> nil).
-		  ('lenses' -> { TLensesProperty }) }
+		  ('lenses' -> { TLenses }) }
 ]
 
 { #category : #visiting }
-LensesInProperty >> accept: aVisitor [
+LensesInLens >> accept: aVisitor [
 
-	^ aVisitor visitLensesInProperty: self
+	^ aVisitor visitLensesInLens: self
 ]
 
 { #category : #printing }
-LensesInProperty >> gtDisplayOn: aStream [
+LensesInLens >> gtDisplayOn: aStream [
 
 	self name ifNil: [ 
 		super gtDisplayOn: aStream.
@@ -37,7 +37,7 @@ LensesInProperty >> gtDisplayOn: aStream [
 ]
 
 { #category : #'gt - extensions' }
-LensesInProperty >> gtHistoryStepItemDisplayText [
+LensesInLens >> gtHistoryStepItemDisplayText [
 
 	| aText aName |
 	self name ifNil: [ ^ self gtDisplayString ].
@@ -51,46 +51,46 @@ LensesInProperty >> gtHistoryStepItemDisplayText [
 ]
 
 { #category : #'gt - extensions' }
-LensesInProperty >> gtLensesChildren [
+LensesInLens >> gtLensesChildren [
 
 	^ self lenses
 ]
 
 { #category : #accessing }
-LensesInProperty >> lenses [
+LensesInLens >> lenses [
 
 	^ lenses ifNil: [ #(  ) ]
 ]
 
 { #category : #accessing }
-LensesInProperty >> lenses: anObject [
+LensesInLens >> lenses: anObject [
 
 	lenses := anObject
 ]
 
 { #category : #accessing }
-LensesInProperty >> name [
+LensesInLens >> name [
 
 	^ name
 ]
 
 { #category : #accessing }
-LensesInProperty >> name: anObject [
+LensesInLens >> name: anObject [
 
 	name := anObject
 ]
 
 { #category : #'api - property' }
-LensesInProperty >> nextStepFrom: aPreviousStep [
+LensesInLens >> nextStepFrom: aPreviousStep [
 
 	^ LensesInStep new
 		  previousStep: aPreviousStep;
-		  property: self;
+		  lens: self;
 		  input: aPreviousStep output
 ]
 
 { #category : #printing }
-LensesInProperty >> printOn: aStream [
+LensesInLens >> printOn: aStream [
 
 	super printOn: aStream.
 

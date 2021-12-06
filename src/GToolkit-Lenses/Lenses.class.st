@@ -1,8 +1,8 @@
 Class {
 	#name : #Lenses,
 	#superclass : #Object,
-	#traits : 'TLensesProperty',
-	#classTraits : 'TLensesProperty classTrait',
+	#traits : 'TLenses',
+	#classTraits : 'TLenses classTrait',
 	#instVars : [
 		'schemaName',
 		'lenses'
@@ -15,7 +15,7 @@ Lenses class >> jsonMappingV1Asociations [
 
 	^ { 
 		  ('schemaName' -> nil).
-		  ('lenses' -> { TLensesProperty }) }
+		  ('lenses' -> { TLenses }) }
 ]
 
 { #category : #visiting }

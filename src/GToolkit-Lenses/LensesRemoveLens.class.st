@@ -1,22 +1,22 @@
 Class {
-	#name : #LensesRemoveProperty,
+	#name : #LensesRemoveLens,
 	#superclass : #Object,
-	#traits : 'TLensesProperty',
-	#classTraits : 'TLensesProperty classTrait',
+	#traits : 'TLenses',
+	#classTraits : 'TLenses classTrait',
 	#instVars : [
 		'name'
 	],
-	#category : #'GToolkit-Lenses-Properties'
+	#category : #'GToolkit-Lenses-Lenses'
 }
 
 { #category : #visiting }
-LensesRemoveProperty >> accept: aVisitor [
+LensesRemoveLens >> accept: aVisitor [
 
-	^ aVisitor visitLensesRemoveProperty: self
+	^ aVisitor visitLensesRemoveLens: self
 ]
 
 { #category : #printing }
-LensesRemoveProperty >> gtDisplayOn: aStream [
+LensesRemoveLens >> gtDisplayOn: aStream [
 
 	self name ifNil: [ 
 		super gtDisplayOn: aStream.
@@ -28,7 +28,7 @@ LensesRemoveProperty >> gtDisplayOn: aStream [
 ]
 
 { #category : #'gt - extensions' }
-LensesRemoveProperty >> gtHistoryStepItemDisplayText [
+LensesRemoveLens >> gtHistoryStepItemDisplayText [
 
 	| aText aName |
 	self name ifNil: [ ^ self gtDisplayString ].
@@ -42,19 +42,19 @@ LensesRemoveProperty >> gtHistoryStepItemDisplayText [
 ]
 
 { #category : #accessing }
-LensesRemoveProperty >> name [
+LensesRemoveLens >> name [
 
 	^ name
 ]
 
 { #category : #accessing }
-LensesRemoveProperty >> name: anObject [
+LensesRemoveLens >> name: anObject [
 
 	name := anObject
 ]
 
 { #category : #printing }
-LensesRemoveProperty >> printOn: aStream [
+LensesRemoveLens >> printOn: aStream [
 
 	super printOn: aStream.
 
