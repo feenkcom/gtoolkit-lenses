@@ -47,7 +47,7 @@ LensesExamples >> executeIssueTrackerLenses [
 
 	aResult := aLenses execute: self originalIssueTrackerJsonString.
 
-	self assert: aResult output object size equals: 4.
+	self assert: aResult output object size equals: 5.
 
 	^ aResult
 ]
@@ -120,14 +120,22 @@ LensesExamples >> lensesForIssueTracker [
 			(LensesRenameLens new
 				 source: 'state';
 				 destination: 'status').
+			(LensesConvertLens new
+				 name: 'status';
+				 convert: 'open' into: 'todo';
+				 convert: 'closed' into: 'done').
+			(LensesHeadLens new name: 'labels').
 			(LensesInLens new
 				 name: 'labels';
 				 lenses: { (LensesRenameLens new
 						  source: 'name';
 						  destination: 'category') }).
+			(LensesHoistLens new
+				 name: 'category';
+				 host: 'labels').
 			(LensesRemoveLens new name: 'labels') }.
 
-	self assert: aLenses lenses size equals: 4.
+	self assert: aLenses lenses size equals: 7.
 
 	^ aLenses
 ]

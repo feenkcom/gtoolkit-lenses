@@ -58,7 +58,7 @@ TLenses >> gtLensesChildren [
 	^ #(  )
 ]
 
-{ #category : #'api - property' }
+{ #category : #'api - lenses' }
 TLenses >> nextStepFrom: aPreviousStep [
 
 	^ LensesTransformationStep new

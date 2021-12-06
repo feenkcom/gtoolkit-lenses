@@ -44,7 +44,7 @@ TLensesStep >> gtHistoryStepItemDisplayText [
 	^ self gtDisplayText
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - extensions' }
 TLensesStep >> gtInputFor: aView context: aContext [
 
 	<gtView>
@@ -65,10 +65,23 @@ TLensesStep >> gtInputFor: aView context: aContext [
 		aText ] ].
 
 	^ aView forward
-		  title: 'Input';
+		  title: 'Input (Object)';
 		  priority: 1;
 		  object: [ self input ];
 		  view: #gtLiveFor:
+]
+
+{ #category : #'gt - extensions' }
+TLensesStep >> gtInputTextFor: aView context: aContext [
+
+	<gtView>
+	self input ifNil: [ ^ aView empty ].
+
+	^ aView forward
+		  title: 'Input (Text)';
+		  priority: 1;
+		  object: [ self input ];
+		  view: #gtTextFor:
 ]
 
 { #category : #'gt - extensions' }
@@ -91,10 +104,23 @@ TLensesStep >> gtOutputFor: aView context: aContext [
 		aText ] ].
 
 	^ aView forward
-		  title: 'Output';
+		  title: 'Output (Object)';
 		  priority: 2;
 		  object: [ self output ];
 		  view: #gtLiveFor:
+]
+
+{ #category : #'gt - extensions' }
+TLensesStep >> gtOutputTextFor: aView context: aContext [
+
+	<gtView>
+	self input ifNil: [ ^ aView empty ].
+
+	^ aView forward
+		  title: 'Output (Text)';
+		  priority: 2;
+		  object: [ self output ];
+		  view: #gtTextFor:
 ]
 
 { #category : #'api - steps' }

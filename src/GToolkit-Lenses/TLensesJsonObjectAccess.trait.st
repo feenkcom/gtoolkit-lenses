@@ -51,7 +51,7 @@ TLensesJsonObjectAccess >> at: aKey put: aValue [
 		('Unknown JSON object: {1}' format: self object printString)
 ]
 
-{ #category : #accessing }
+{ #category : #'gt - extensions' }
 TLensesJsonObjectAccess >> gtJsonFor: aView context: aContext [
 
 	<gtView>
@@ -74,6 +74,20 @@ TLensesJsonObjectAccess >> gtLiveFor: aView [
 		  priority: 1;
 		  object: [ self ];
 		  view: #gtJsonFor:context:
+]
+
+{ #category : #'gt - extensions' }
+TLensesJsonObjectAccess >> gtTextFor: aView [
+
+	<gtView>
+	self object ifNil: [ ^ aView empty ].
+
+	^ aView textEditor
+		  title: 'JSON (Text)';
+		  priority: 2;
+		  aptitude: [ BrGlamorousCodeEditorAptitude ];
+		  styler: [ JSONParser gtStyler ];
+		  text: [ STONJSON toStringPretty: self object ]
 ]
 
 { #category : #'api - json' }

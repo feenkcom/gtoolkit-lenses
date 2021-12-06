@@ -101,6 +101,53 @@ LensesJsonExecutor >> visitLensesAddLens: aLens [
 ]
 
 { #category : #visiting }
+LensesJsonExecutor >> visitLensesConvertLens: aLens [
+
+	self assert: self step lens == aLens.
+
+	self step
+		at: aLens name
+		ifPresent: [ :aValue | 
+			aLens
+				convert: aValue
+				ifPresent: [ :aNewValue | self step at: aLens name put: aNewValue ]
+				ifAbsent: [ self step at: aLens name put: aLens defaultValue ] ]
+		ifAbsent: [ self step at: aLens name put: aLens defaultValue ]
+]
+
+{ #category : #visiting }
+LensesJsonExecutor >> visitLensesHeadLens: aLens [
+
+	self assert: self step lens == aLens.
+
+	self step
+		at: aLens name
+		ifPresent: [ :anArray | 
+			anArray
+				ifNotEmpty: [ 
+					| aNewValue |
+					aNewValue := anArray first.
+					self step at: aLens name put: aNewValue ]
+				ifEmpty: [ self step at: aLens name put: aLens defaultValue ] ]
+		ifAbsent: [ self step at: aLens name put: aLens defaultValue ]
+]
+
+{ #category : #visiting }
+LensesJsonExecutor >> visitLensesHoistLens: aLens [
+
+	self assert: self step lens == aLens.
+
+	self step
+		at: aLens host
+		ifPresent: [ :aValue | 
+			| aSubValue |
+			aSubValue := aValue at: aLens name ifAbsent: [ aLens defaultValue ].
+			self step at: aLens name put: aSubValue. ]
+		ifAbsent: [ 
+			self step at: aLens name put: aLens defaultValue ]
+]
+
+{ #category : #visiting }
 LensesJsonExecutor >> visitLensesInLens: aLens [
 
 	| anInStep myChildren |

@@ -45,6 +45,7 @@ Lenses >> gtLensesFor: aView [
 		  title: 'Lenses';
 		  items: [ self lenses ];
 		  children: [ :aProperty | aProperty gtLensesChildren ];
+		  itemText: #gtHistoryStepItemDisplayText;
 		  expandAll
 ]
 

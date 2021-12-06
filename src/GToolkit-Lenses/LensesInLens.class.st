@@ -80,7 +80,7 @@ LensesInLens >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #'api - property' }
+{ #category : #'api - lenses' }
 LensesInLens >> nextStepFrom: aPreviousStep [
 
 	^ LensesInStep new

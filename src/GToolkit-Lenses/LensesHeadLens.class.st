@@ -1,5 +1,5 @@
 Class {
-	#name : #LensesRemoveLens,
+	#name : #LensesHeadLens,
 	#superclass : #Object,
 	#traits : 'TLenses',
 	#classTraits : 'TLenses classTrait',
@@ -10,30 +10,30 @@ Class {
 }
 
 { #category : #visiting }
-LensesRemoveLens >> accept: aVisitor [
+LensesHeadLens >> accept: aVisitor [
 
-	^ aVisitor visitLensesRemoveLens: self
+	^ aVisitor visitLensesHeadLens: self
 ]
 
 { #category : #printing }
-LensesRemoveLens >> gtDisplayOn: aStream [
+LensesHeadLens >> gtDisplayOn: aStream [
 
 	self name ifNil: [ 
 		super gtDisplayOn: aStream.
 		^ self ].
 
 	aStream
-		nextPutAll: 'Remove ';
+		nextPutAll: 'Head in ';
 		nextPutAll: self name asString
 ]
 
 { #category : #'gt - extensions' }
-LensesRemoveLens >> gtHistoryStepItemDisplayText [
+LensesHeadLens >> gtHistoryStepItemDisplayText [
 
 	| aText aName |
 	self name ifNil: [ ^ self gtDisplayString ].
 
-	aText := 'Remove ' asRopedText.
+	aText := 'Head in ' asRopedText.
 	aName := LensesUtility styleKey: self name.
 
 	aText append: aName.
@@ -42,26 +42,26 @@ LensesRemoveLens >> gtHistoryStepItemDisplayText [
 ]
 
 { #category : #accessing }
-LensesRemoveLens >> name [
+LensesHeadLens >> name [
 
 	^ name
 ]
 
 { #category : #accessing }
-LensesRemoveLens >> name: anObject [
+LensesHeadLens >> name: anObject [
 
 	name := anObject
 ]
 
 { #category : #printing }
-LensesRemoveLens >> printOn: aStream [
+LensesHeadLens >> printOn: aStream [
 
 	super printOn: aStream.
 
 	self name ifNil: [ ^ self ].
 
 	aStream
-		nextPut: $(;
+		nextPutAll: '(';
 		nextPutAll: self name asString;
 		nextPut: $)
 ]
