@@ -30,6 +30,20 @@ LensesAddProperty >> gtDisplayOn: aStream [
 		nextPutAll: self value asString
 ]
 
+{ #category : #'gt - extensions' }
+LensesAddProperty >> gtHistoryStepItemDisplayText [
+
+	| aText aName |
+	self name ifNil: [ ^ self gtDisplayString ].
+
+	aText := 'Add ' asRopedText.
+	aName := LensesUtility styleKey: self name.
+
+	aText append: aName.
+
+	^ aText
+]
+
 { #category : #accessing }
 LensesAddProperty >> name [
 

@@ -37,6 +37,20 @@ LensesInProperty >> gtDisplayOn: aStream [
 ]
 
 { #category : #'gt - extensions' }
+LensesInProperty >> gtHistoryStepItemDisplayText [
+
+	| aText aName |
+	self name ifNil: [ ^ self gtDisplayString ].
+
+	aText := 'In ' asRopedText.
+	aName := LensesUtility styleKey: self name.
+
+	aText append: aName.
+
+	^ aText
+]
+
+{ #category : #'gt - extensions' }
 LensesInProperty >> gtLensesChildren [
 
 	^ self lenses

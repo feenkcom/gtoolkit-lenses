@@ -47,6 +47,12 @@ TLensesProperty >> asJsonString [
 ]
 
 { #category : #'gt - extensions' }
+TLensesProperty >> gtHistoryStepItemDisplayText [
+
+	^ self gtDisplayString
+]
+
+{ #category : #'gt - extensions' }
 TLensesProperty >> gtLensesChildren [
 
 	^ #(  )

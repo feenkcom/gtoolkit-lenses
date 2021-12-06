@@ -38,6 +38,12 @@ TLensesStep >> gtHistoryStepChildren [
 	^ #(  )
 ]
 
+{ #category : #'gt - extensions' }
+TLensesStep >> gtHistoryStepItemDisplayText [
+
+	^ self gtDisplayText
+]
+
 { #category : #accessing }
 TLensesStep >> gtInputFor: aView context: aContext [
 

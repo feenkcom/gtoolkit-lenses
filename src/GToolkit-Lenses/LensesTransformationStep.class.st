@@ -32,6 +32,14 @@ LensesTransformationStep >> gtDisplayOn: stream [
 	self property gtDisplayOn: stream
 ]
 
+{ #category : #'gt - extensions' }
+LensesTransformationStep >> gtHistoryStepItemDisplayText [
+
+	self property ifNil: [ ^ self gtDisplayString ].
+
+	^ self property gtHistoryStepItemDisplayText
+]
+
 { #category : #'api - steps' }
 LensesTransformationStep >> input [
 

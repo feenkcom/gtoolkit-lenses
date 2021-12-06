@@ -27,6 +27,20 @@ LensesRemoveProperty >> gtDisplayOn: aStream [
 		nextPutAll: self name asString
 ]
 
+{ #category : #'gt - extensions' }
+LensesRemoveProperty >> gtHistoryStepItemDisplayText [
+
+	| aText aName |
+	self name ifNil: [ ^ self gtDisplayString ].
+
+	aText := 'Rename ' asRopedText.
+	aName := LensesUtility styleKey: self name.
+
+	aText append: aName.
+
+	^ aText
+]
+
 { #category : #accessing }
 LensesRemoveProperty >> name [
 

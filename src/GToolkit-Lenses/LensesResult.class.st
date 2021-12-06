@@ -25,7 +25,7 @@ LensesResult >> gtHistoryFor: aView [
 		  items: [ self withPreviousSteps ];
 		  children: #gtHistoryStepChildren;
 		  expandAll;
-		  column: 'Steps' text: #yourself
+		  column: 'Steps' text: #gtHistoryStepItemDisplayText
 ]
 
 { #category : #'gt - extensions' }

@@ -45,6 +45,25 @@ LensesRenameProperty >> gtDisplayOn: aStream [
 		nextPutAll: self destination asString
 ]
 
+{ #category : #'gt - extensions' }
+LensesRenameProperty >> gtHistoryStepItemDisplayText [
+
+	| aText aSource aDestination |
+	self source ifNil: [ ^ self gtDisplayString ].
+	self destination ifNil: [ ^ self gtDisplayString ].
+
+	aText := 'Rename ' asRopedText.
+	aSource := LensesUtility styleKey: self source.
+	aDestination := LensesUtility styleKey: self destination.
+
+	aText
+		append: aSource;
+		append: ' to ' asRopedText;
+		append: aDestination.
+
+	^ aText
+]
+
 { #category : #printing }
 LensesRenameProperty >> printOn: aStream [
 

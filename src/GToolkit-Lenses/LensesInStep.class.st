@@ -113,6 +113,14 @@ LensesInStep >> gtHistoryStepChildren [
 	^ self children ifNil: [ #(  ) ]
 ]
 
+{ #category : #'gt - extensions' }
+LensesInStep >> gtHistoryStepItemDisplayText [
+
+	self property ifNil: [ ^ self gtDisplayString ].
+
+	^ self property gtHistoryStepItemDisplayText
+]
+
 { #category : #initialization }
 LensesInStep >> initialize [
 
