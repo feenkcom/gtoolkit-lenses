@@ -71,7 +71,8 @@ LensesInProperty >> nextStepFrom: aPreviousStep [
 
 	^ LensesInStep new
 		  previousStep: aPreviousStep;
-		  property: self
+		  property: self;
+		  input: aPreviousStep output
 ]
 
 { #category : #printing }

@@ -10,7 +10,8 @@ Class {
 		'previousStep',
 		'isScopedOutput',
 		'childrenSteps',
-		'output'
+		'output',
+		'input'
 	],
 	#category : #'GToolkit-Lenses-Steps'
 }
@@ -123,7 +124,13 @@ LensesInStep >> initialize [
 { #category : #'api - steps' }
 LensesInStep >> input [
 
-	^ self previousStep input
+	^ input ifNil: [ input := self previousStep input ]
+]
+
+{ #category : #'api - steps' }
+LensesInStep >> input: anInput [
+
+	input := anInput
 ]
 
 { #category : #private }

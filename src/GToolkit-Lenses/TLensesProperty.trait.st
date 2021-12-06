@@ -57,5 +57,6 @@ TLensesProperty >> nextStepFrom: aPreviousStep [
 
 	^ LensesTransformationStep new
 		  previousStep: aPreviousStep;
-		  property: self
+		  property: self;
+		  input: aPreviousStep output.
 ]

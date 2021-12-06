@@ -44,6 +44,16 @@ TLensesStep >> gtInputFor: aView context: aContext [
 	<gtView>
 	self input ifNil: [ ^ aView empty ].
 
+	"aContext at: #gtTreeIndexStyler ifAbsentPut: [ 
+		[ :anAssoc | 
+		| aText |
+		aText := anAssoc key gtDisplayText asRopedText.
+		self output
+			at: anAssoc key
+			ifPresent: [ :aValue | aText foreground: Color gray ]
+			ifAbsent: [ aText foreground: BrGlamorousColors errorBackgroundColor ].
+		aText ] ]."
+
 	^ aView forward
 		  title: 'Input';
 		  priority: 1;
@@ -52,10 +62,21 @@ TLensesStep >> gtInputFor: aView context: aContext [
 ]
 
 { #category : #'gt - extensions' }
-TLensesStep >> gtOutputFor: aView [
+TLensesStep >> gtOutputFor: aView context: aContext [
 
 	<gtView>
 	self input ifNil: [ ^ aView empty ].
+
+	"aContext at: #gtTreeIndexStyler ifAbsentPut: [ 
+		[ :anAssoc | 
+		| aText |
+		aText := anAssoc key gtDisplayText asRopedText.
+		self output
+			at: anAssoc key
+			ifPresent: [ :aValue | aText foreground: Color gray ]
+			ifAbsent: [ 
+			aText foreground: BrGlamorousColors successBackgroundColor ].
+		aText ] ]."
 
 	^ aView forward
 		  title: 'Output';

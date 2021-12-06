@@ -6,7 +6,8 @@ Class {
 	#instVars : [
 		'property',
 		'output',
-		'previousStep'
+		'previousStep',
+		'input'
 	],
 	#category : #'GToolkit-Lenses-Steps'
 }
@@ -34,7 +35,13 @@ LensesTransformationStep >> gtDisplayOn: stream [
 { #category : #'api - steps' }
 LensesTransformationStep >> input [
 
-	^ self previousStep output
+	^ input ifNil: [ input := self previousStep output ]
+]
+
+{ #category : #accessing }
+LensesTransformationStep >> input: anObject [
+
+	input := anObject
 ]
 
 { #category : #'api - steps' }

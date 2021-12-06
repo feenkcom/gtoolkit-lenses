@@ -55,7 +55,7 @@ LensesResult >> gtStepsInputAndOutputViewFor: aView [
 						  viewSelector: #gtInputFor:context:.
 					  anOutput
 						  object: anEvent object
-						  viewSelector: #gtOutputFor: ].
+						  viewSelector: #gtOutputFor:context: ].
 			  aSteps when: GtPhlowObjectToSelect do: [ :anEvent | 
 				  anEvent consumed: true.
 				  anInput
@@ -63,7 +63,7 @@ LensesResult >> gtStepsInputAndOutputViewFor: aView [
 					  viewSelector: #gtInputFor:context:.
 				  anOutput
 					  object: anEvent object
-					  viewSelector: #gtOutputFor: ].
+					  viewSelector: #gtOutputFor:context: ].
 
 			  anInput := GtInspector
 				             forObject: self
@@ -76,7 +76,7 @@ LensesResult >> gtStepsInputAndOutputViewFor: aView [
 
 			  anOutput := GtInspector
 				              forObject: self
-				              viewSelector: #gtOutputFor:.
+				              viewSelector: #gtOutputFor:context:.
 			  anOutput border:
 				  (BlBorder
 					   paint: BrGlamorousColors disabledButtonBorderColor

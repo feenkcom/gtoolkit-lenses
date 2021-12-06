@@ -9,19 +9,6 @@ Class {
 	#category : #'GToolkit-Lenses-Inputs'
 }
 
-{ #category : #'gt - extensions' }
-LensesTransformedJsonObject >> gtJsonParentFor: aView [
-
-	<gtView>
-	self parent ifNil: [ ^ aView empty ].
-
-	^ aView forward
-		  title: 'JSON Parent';
-		  priority: 2;
-		  object: [ self parent ];
-		  view: #gtJsonFor:
-]
-
 { #category : #accessing }
 LensesTransformedJsonObject >> object [
 

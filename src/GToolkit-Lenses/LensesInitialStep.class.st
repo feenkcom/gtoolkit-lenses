@@ -35,7 +35,7 @@ LensesInitialStep >> gtHistoryFor: aView [
 		  column: 'Name' text: #yourself
 ]
 
-{ #category : #'gt - extensions' }
+{ #category : #'as yet unclassified' }
 LensesInitialStep >> gtOutputFor: aView [
 
 	^ aView empty
