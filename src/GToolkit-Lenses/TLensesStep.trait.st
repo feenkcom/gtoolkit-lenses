@@ -50,15 +50,19 @@ TLensesStep >> gtInputFor: aView context: aContext [
 	<gtView>
 	self input ifNil: [ ^ aView empty ].
 
-	"aContext at: #gtTreeIndexStyler ifAbsentPut: [ 
-		[ :anAssoc | 
+	aContext at: #gtTreeIndexStyler ifAbsentPut: [ 
+		[ :aNode | 
 		| aText |
-		aText := anAssoc key gtDisplayText asRopedText.
-		self output
-			at: anAssoc key
-			ifPresent: [ :aValue | aText foreground: Color gray ]
-			ifAbsent: [ aText foreground: BrGlamorousColors errorBackgroundColor ].
-		aText ] ]."
+		aText := aNode key gtDisplayText asRopedText.
+
+		aNode hasParent ifFalse: [ 
+			self output
+				at: aNode key
+				ifPresent: [ :aValue | aText foreground: Color gray ]
+				ifAbsent: [ 
+				aText foreground: BrGlamorousColors errorBackgroundColor ].
+			aText ].
+		aText ] ].
 
 	^ aView forward
 		  title: 'Input';
@@ -73,16 +77,18 @@ TLensesStep >> gtOutputFor: aView context: aContext [
 	<gtView>
 	self input ifNil: [ ^ aView empty ].
 
-	"aContext at: #gtTreeIndexStyler ifAbsentPut: [ 
-		[ :anAssoc | 
+	aContext at: #gtTreeIndexStyler ifAbsentPut: [ 
+		[ :aNode | 
 		| aText |
-		aText := anAssoc key gtDisplayText asRopedText.
-		self output
-			at: anAssoc key
-			ifPresent: [ :aValue | aText foreground: Color gray ]
-			ifAbsent: [ 
-			aText foreground: BrGlamorousColors successBackgroundColor ].
-		aText ] ]."
+		aText := aNode key gtDisplayText asRopedText.
+
+		aNode hasParent ifFalse: [ 
+			self input
+				at: aNode key
+				ifPresent: [ :aValue | aText foreground: Color gray ]
+				ifAbsent: [ 
+				aText foreground: BrGlamorousColors successBackgroundColor ] ].
+		aText ] ].
 
 	^ aView forward
 		  title: 'Output';
