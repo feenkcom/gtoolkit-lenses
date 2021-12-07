@@ -36,10 +36,12 @@ LensesAddLens >> gtHistoryStepItemDisplayText [
 	| aText aName |
 	self name ifNil: [ ^ self gtDisplayString ].
 
-	aText := 'Add ' asRopedText.
+	aText := 'At ' asRopedText.
 	aName := LensesUtility styleKey: self name.
 
 	aText append: aName.
+	aText append: ' put ' asRopedText.
+	aText append: self value asRopedText italic.
 
 	^ aText
 ]

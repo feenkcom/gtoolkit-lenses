@@ -46,6 +46,12 @@ TLenses >> asJsonString [
 		  write
 ]
 
+{ #category : #'api - lenses' }
+TLenses >> defaultValue [
+
+	^ self error: 'Default value is not defined (supported).'
+]
+
 { #category : #'gt - extensions' }
 TLenses >> gtHistoryStepItemDisplayText [
 

@@ -4,6 +4,14 @@ Trait {
 }
 
 { #category : #'api - lens composition' }
+TLensesComposition >> add: aName value: aValue [
+
+	self addLens: (LensesAddLens new
+			 name: aName;
+			 value: aValue)
+]
+
+{ #category : #'api - lens composition' }
 TLensesComposition >> addLens: aLens [
 
 	self explicitRequirement
@@ -28,4 +36,13 @@ TLensesComposition >> remove: aName [
 TLensesComposition >> rename: anOldName to: aNewName [
 
 	self addLens: (LensesRenameLens new source: anOldName; destination: aNewName)
+]
+
+{ #category : #'api - lens composition' }
+TLensesComposition >> split: aFirstName destinations: aSecondName regex: aRegex [
+
+	self addLens: (LensesSplitLens new
+			 name: aFirstName;
+			 destinations: aSecondName;
+			 splitter: (LensesRegexSplitter forString: aRegex))
 ]

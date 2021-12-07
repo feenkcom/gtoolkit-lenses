@@ -4,7 +4,7 @@ Class {
 	#category : #'GToolkit-Lenses-Examples'
 }
 
-{ #category : #'examples - amazon germany' }
+{ #category : #'examples - merge' }
 LensesAddressShowcase >> amazonGermanyJsonString [
 
 	<gtExample>
@@ -21,7 +21,7 @@ LensesAddressShowcase >> amazonGermanyJsonString [
 	}'
 ]
 
-{ #category : #'examples - amazon germany' }
+{ #category : #'examples - merge' }
 LensesAddressShowcase >> amazonGermanyLenses [
 
 	<gtExample>
@@ -35,7 +35,7 @@ LensesAddressShowcase >> amazonGermanyLenses [
 	^ aLenses
 ]
 
-{ #category : #accessing }
+{ #category : #'examples - merge' }
 LensesAddressShowcase >> executeAmazonGermanLenses [
 
 	<gtExample>
@@ -43,4 +43,40 @@ LensesAddressShowcase >> executeAmazonGermanLenses [
 	aLenses := self amazonGermanyLenses.
 
 	^ aLenses execute: self amazonGermanyJsonString
+]
+
+{ #category : #'examples - split' }
+LensesAddressShowcase >> executeSplitStreetNameAndNumberLenses [
+
+	<gtExample>
+	| aLenses |
+	aLenses := self splitStreetNameAndNumberLenses.
+
+	^ aLenses execute: self mergedStreetNameAndNumberJsonString
+]
+
+{ #category : #'examples - split' }
+LensesAddressShowcase >> mergedStreetNameAndNumberJsonString [
+
+	<gtExample>
+	
+	^ '{
+		"full_name" : "Annett T Wannemaker",
+		"address_line" : "Lützowplatz 112/23",
+		"postal_code" : "54429",
+		"city" : "Heddert"
+		}'
+]
+
+{ #category : #'examples - split' }
+LensesAddressShowcase >> splitStreetNameAndNumberLenses [
+
+	<gtExample>
+	| aLenses |
+	aLenses := Lenses new
+		split: 'address_line' destinations: #( 'street_number' ) regex: '^(.*)/([0-9a-z]+)$';
+		rename: 'address_line' to: 'street_name';
+		add: 'country' value: 'Germany'.  
+
+	^ aLenses
 ]

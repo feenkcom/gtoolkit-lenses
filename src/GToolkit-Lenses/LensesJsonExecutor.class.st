@@ -214,6 +214,32 @@ LensesJsonExecutor >> visitLensesRenameLens: aLens [
 ]
 
 { #category : #visiting }
+LensesJsonExecutor >> visitLensesSplitLens: aLens [
+
+	self assert: self step lens == aLens.
+
+	self step
+		at: aLens name
+		ifPresent: [ :aValue | 
+			| aSubExpressions allDestinations |
+			aSubExpressions := aLens splitter value: aValue.
+			allDestinations := aLens allDestinations.
+
+			aSubExpressions size >= allDestinations size
+				ifTrue: [ 
+					aLens allDestinations withIndexDo: [ :aDestination :anIndex | 
+						aSubExpressions
+							detect: [ :anAssoc | anAssoc key = anIndex ]
+							ifFound: [ :anAssoc | 
+								self step
+									at: aDestination
+									put: anAssoc value ]
+							ifNone: [ self error: 'Unexpected split error' ] ] ]
+				ifFalse: [ self error: ('Cannot split value: {1}' format: aValue) ] ]
+		ifAbsent: [ self step at: aLens name put: aLens defaultValue ]
+]
+
+{ #category : #visiting }
 LensesJsonExecutor >> visitLensesWrapLens: aLens [
 
 	self assert: self step lens == aLens.
