@@ -8,43 +8,6 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-06T19:23:36.300364-03:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-06T19:25:25.127242-03:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "OGRRceOODQCcdkKcD2fH0w=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "Glamorous Lenses are inspired by the project [Cambria](https://www.inkandswitch.com/cambria/)."
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
 					"items" : [
 						{
 							"__type" : "textSnippet",
@@ -254,12 +217,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2021-11-30T10:03:15.251729-03:00"
+			"dateAndTimeString" : "2021-12-07T16:06:45.45121-03:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Glamorous Lenses"
+		"title" : "Issue Tracker Example"
 	},
 	"uid" : {
 		"__type" : "uuid",
