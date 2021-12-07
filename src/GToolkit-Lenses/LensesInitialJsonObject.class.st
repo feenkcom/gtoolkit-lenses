@@ -18,7 +18,10 @@ LensesInitialJsonObject class >> forObject: anObject [
 { #category : #'api - instance creation' }
 LensesInitialJsonObject class >> forString: aString [
 
-	^ self forObject: (STONJSON fromString: aString)
+	^ self forObject: (aString readStreamDo: [ :aStream | 
+			   (NeoJSONReader on: aStream)
+				   mapClass: OrderedDictionary;
+				   next ])
 ]
 
 { #category : #'api - instance creation' }

@@ -170,6 +170,25 @@ LensesJsonExecutor >> visitLensesInLens: aLens [
 ]
 
 { #category : #visiting }
+LensesJsonExecutor >> visitLensesMergeLens: aLens [
+
+	self assert: self step lens == aLens.
+
+	self step
+		at: aLens firstName
+		ifPresent: [ :aFirstValue | 
+			self step
+				at: aLens secondName
+				ifPresent: [ :aSecondValue | 
+					| aNewValue |
+					aNewValue := aLens formatValue: aFirstValue value: aSecondValue.
+					self step at: aLens firstName put: aNewValue.
+					self step removeKey: aLens secondName ]
+				ifAbsent: [ "ignore" ] ]
+		ifAbsent: [ self step at: aLens firstName put: aLens defaultValue ]
+]
+
+{ #category : #visiting }
 LensesJsonExecutor >> visitLensesRemoveLens: aLens [
 
 	self assert: self step lens == aLens.
@@ -192,6 +211,20 @@ LensesJsonExecutor >> visitLensesRenameLens: aLens [
 			self step removeKey: aLens source ]
 		ifAbsent: [ 
 		self step at: aLens destination put: aLens defaultValue ]
+]
+
+{ #category : #visiting }
+LensesJsonExecutor >> visitLensesWrapLens: aLens [
+
+	self assert: self step lens == aLens.
+
+	self step
+		at: aLens name
+		ifPresent: [ :anObject | 
+			| aNewValue |
+			aNewValue := aLens listClass with: anObject.
+			self step at: aLens name put: aNewValue ]
+		ifAbsent: [ self step at: aLens name put: aLens defaultValue ]
 ]
 
 { #category : #visiting }

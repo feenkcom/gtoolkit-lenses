@@ -1,8 +1,8 @@
 Class {
 	#name : #LensesInLens,
 	#superclass : #Object,
-	#traits : 'TLenses',
-	#classTraits : 'TLenses classTrait',
+	#traits : 'TLenses + TLensesComposition',
+	#classTraits : 'TLenses classTrait + TLensesComposition classTrait',
 	#instVars : [
 		'name',
 		'lenses'
@@ -22,6 +22,12 @@ LensesInLens class >> jsonMappingV1Asociations [
 LensesInLens >> accept: aVisitor [
 
 	^ aVisitor visitLensesInLens: self
+]
+
+{ #category : #'api - lens composition' }
+LensesInLens >> addLens: aLens [
+
+	self lenses: (self lenses copyWith: aLens)
 ]
 
 { #category : #printing }
