@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T16:09:42.776557-03:00"
+						"dateAndTimeString" : "2021-12-08T12:50:02.355419-03:00"
 					}
 				},
 				"editEmail" : {
@@ -29,12 +29,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T16:09:42.776557-03:00"
+						"dateAndTimeString" : "2021-12-08T12:50:02.355419-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "wFx3yPSODQC1XtPkDAeEhg=="
+					"uidString" : "9cVvKgaPDQC3ilxND3je2g=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T18:08:39.504726-03:00"
+						"dateAndTimeString" : "2021-12-08T13:04:08.682843-03:00"
 					}
 				},
 				"editEmail" : {
@@ -66,15 +66,15 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T18:08:39.504726-03:00"
+						"dateAndTimeString" : "2021-12-08T13:04:08.682843-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "qkmtg/aODQCSxTwXBO2L8A=="
+					"uidString" : "hfl9YAaPDQCIlo8pAsHiqQ=="
 				},
-				"exampleSelector" : "mergedStreetNameAndNumberJsonString",
-				"previewHeight" : 150,
+				"exampleSelector" : "tagsFieldsJsonString",
+				"previewHeight" : 250,
 				"previewShowSelector" : "gtJSONFor:context:",
 				"exampleBehaviorName" : "LensesAddressShowcase",
 				"codeExpanded" : false,
@@ -95,7 +95,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T18:09:26.393751-03:00"
+						"dateAndTimeString" : "2021-12-08T13:04:31.770558-03:00"
 					}
 				},
 				"editEmail" : {
@@ -106,12 +106,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T18:09:26.393751-03:00"
+						"dateAndTimeString" : "2021-12-08T13:04:31.770558-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "2d9rhvaODQCSx5ARBO2L8A=="
+					"uidString" : "nGBsYQaPDQCImG01AsHiqQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -132,7 +132,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T18:09:30.902541-03:00"
+						"dateAndTimeString" : "2021-12-08T13:07:19.055062-03:00"
 					}
 				},
 				"editEmail" : {
@@ -143,15 +143,15 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T18:09:30.902541-03:00"
+						"dateAndTimeString" : "2021-12-08T13:07:19.055062-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "Nny9hvaODQCSyQZbBO2L8A=="
+					"uidString" : "AdPWawaPDQCImr+ZAsHiqQ=="
 				},
-				"exampleSelector" : "splitStreetNameAndNumberLenses",
-				"previewHeight" : 110,
+				"exampleSelector" : "hoistPrimaryTagLenses",
+				"previewHeight" : 180,
 				"previewShowSelector" : "gtLensesFor:",
 				"exampleBehaviorName" : "LensesAddressShowcase",
 				"codeExpanded" : false,
@@ -172,7 +172,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T18:10:09.239834-03:00"
+						"dateAndTimeString" : "2021-12-08T13:08:10.247898-03:00"
 					}
 				},
 				"editEmail" : {
@@ -183,12 +183,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T18:10:09.239834-03:00"
+						"dateAndTimeString" : "2021-12-08T13:08:10.247898-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "EErviPaODQCSzBViBO2L8A=="
+					"uidString" : "trvabgaPDQCInJctAsHiqQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -209,7 +209,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T18:10:13.184759-03:00"
+						"dateAndTimeString" : "2021-12-08T13:08:13.275944-03:00"
 					}
 				},
 				"editEmail" : {
@@ -220,15 +220,15 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T18:10:13.184759-03:00"
+						"dateAndTimeString" : "2021-12-08T13:08:13.275944-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "HKlCifaODQCSzrCPBO2L8A=="
+					"uidString" : "UCsSbwaPDQCInkzXAsHiqQ=="
 				},
-				"exampleSelector" : "executeSplitStreetNameAndNumberLenses",
-				"previewHeight" : 200,
+				"exampleSelector" : "executeTagsFieldsJsonString",
+				"previewHeight" : 230,
 				"previewShowSelector" : "gtOutputFor:context:",
 				"exampleBehaviorName" : "LensesAddressShowcase",
 				"codeExpanded" : false,
@@ -245,7 +245,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2021-12-07T16:04:43.625028-03:00"
+			"dateAndTimeString" : "2021-12-08T12:49:01.738105-03:00"
 		}
 	},
 	"editEmail" : {
@@ -256,15 +256,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2021-12-07T16:04:54.302124-03:00"
+			"dateAndTimeString" : "2021-12-08T12:49:27.12989-03:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Address Split Fields Example"
+		"title" : "Address Hoist Fields Example"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "d3b176c8-f48e-0d00-b55d-52810c078486"
+		"uuid" : "e4176f2a-068f-0d00-b789-de6b0f78deda"
 	}
 }

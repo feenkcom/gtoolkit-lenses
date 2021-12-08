@@ -75,7 +75,7 @@
 				},
 				"exampleSelector" : "amazonGermanyJsonString",
 				"previewHeight" : 260,
-				"previewShowSelector" : "gtJSONFor:",
+				"previewShowSelector" : "gtJSONFor:context:",
 				"exampleBehaviorName" : "LensesAddressShowcase",
 				"codeExpanded" : false,
 				"previewExpanded" : true,
