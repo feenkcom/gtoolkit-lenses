@@ -55,6 +55,32 @@ LensesAddressShowcase >> executeSplitStreetNameAndNumberLenses [
 	^ aLenses execute: self mergedStreetNameAndNumberJsonString
 ]
 
+{ #category : #'examples - hoist' }
+LensesAddressShowcase >> executeTagsFieldsJsonString [
+
+	<gtExample>
+	| aLenses |
+	aLenses := self hoistPrimaryTagLenses.
+
+	^ aLenses execute: self tagsFieldsJsonString 
+]
+
+{ #category : #'examples - hoist' }
+LensesAddressShowcase >> hoistPrimaryTagLenses [
+
+	<gtExample>
+	| aLenses |
+	aLenses := Lenses new
+		rename: 'full_name' to: 'person_name';
+		hoist: 'primary' from: 'tags';
+		hoist: 'active' from: 'tags';
+		rename: 'primary' to: 'is_primary';
+		rename: 'active' to: 'is_active';
+		remove: 'tags'.
+
+	^ aLenses
+]
+
 { #category : #'examples - split' }
 LensesAddressShowcase >> mergedStreetNameAndNumberJsonString [
 
@@ -79,4 +105,22 @@ LensesAddressShowcase >> splitStreetNameAndNumberLenses [
 		add: 'country' value: 'Germany'.  
 
 	^ aLenses
+]
+
+{ #category : #'examples - hoist' }
+LensesAddressShowcase >> tagsFieldsJsonString [
+
+	<gtExample>
+	 
+	^ '{
+		"full_name" : "Annett T Wannemaker",
+		"street_name" : "Lützowplatz 112",
+		"apartment_number" : "apartment 23",
+		"postal_code" : "54429",
+		"city" : "Heddert",
+		"tags" : { 
+			"primary" : "true",
+			"active" : "true"
+		}
+	}'
 ]

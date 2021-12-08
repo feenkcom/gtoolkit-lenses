@@ -18,6 +18,12 @@ TLensesComposition >> addLens: aLens [
 ]
 
 { #category : #'api - lens composition' }
+TLensesComposition >> hoist: aName from: aHost [
+
+	self addLens: (LensesHoistLens new name: aName; host: aHost)
+]
+
+{ #category : #'api - lens composition' }
 TLensesComposition >> merge: aFirstName and: aSecondName format: aFormater [
 
 	self addLens: (LensesMergeLens new
