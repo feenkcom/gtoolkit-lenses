@@ -23,7 +23,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2021-12-06T19:29:57.885933-03:00"
+									"dateAndTimeString" : "2021-12-09T16:21:38.853947-03:00"
 								}
 							},
 							"editEmail" : {
@@ -34,7 +34,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2021-12-06T19:30:15.81869-03:00"
+									"dateAndTimeString" : "2021-12-09T16:21:52.544268-03:00"
 								}
 							},
 							"uid" : {
@@ -44,7 +44,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "The following JSON Object:"
+							"string" : "**Input.** Consider the following issue JSON object:"
 						},
 						{
 							"__type" : "exampleSnippet",
@@ -79,12 +79,12 @@
 								"uidString" : "4Q08g+OODQCcf6RYD2fH0w=="
 							},
 							"exampleSelector" : "originalIssueTrackerJsonString",
-							"previewHeight" : 400,
-							"previewShowSelector" : "gtJSONFor:",
+							"previewHeight" : 380,
+							"previewShowSelector" : "gtJSONFor:context:",
 							"exampleBehaviorName" : "LensesExamples",
 							"codeExpanded" : false,
 							"previewExpanded" : true,
-							"noCode" : false
+							"noCode" : true
 						},
 						{
 							"__type" : "textSnippet",
@@ -100,7 +100,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2021-12-06T19:30:21.416338-03:00"
+									"dateAndTimeString" : "2021-12-09T16:22:21.766755-03:00"
 								}
 							},
 							"editEmail" : {
@@ -111,7 +111,84 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2021-12-06T19:30:42.938501-03:00"
+									"dateAndTimeString" : "2021-12-09T16:22:21.766755-03:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "+JAnQx2PDQC5umPNAzhpRw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "**Lenses.** If we apply the following lenses:"
+						},
+						{
+							"__type" : "exampleSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-09T16:22:26.84044-03:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-09T16:22:26.84044-03:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "ndOEQx2PDQC5vWwfAzhpRw=="
+							},
+							"exampleSelector" : "lensesForIssueTracker",
+							"previewHeight" : 230,
+							"previewShowSelector" : "gtLensesFor:",
+							"exampleBehaviorName" : "LensesExamples",
+							"codeExpanded" : false,
+							"previewExpanded" : true,
+							"noCode" : true
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-09T16:24:20.834876-03:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-09T16:24:26.304967-03:00"
 								}
 							},
 							"uid" : {
@@ -121,7 +198,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "can be tranformed into another one:"
+							"string" : "**Output.** The resulting issue will look as follows:"
 						},
 						{
 							"__type" : "exampleSnippet",
@@ -156,12 +233,89 @@
 								"uidString" : "mq7TfOOODQCcfC0YD2fH0w=="
 							},
 							"exampleSelector" : "executeIssueTrackerLenses",
-							"previewHeight" : 500,
-							"previewShowSelector" : "gtViewsFor:",
+							"previewHeight" : 150,
+							"previewShowSelector" : "gtOutputTextFor:context:",
 							"exampleBehaviorName" : "LensesExamples",
 							"codeExpanded" : false,
 							"previewExpanded" : true,
-							"noCode" : false
+							"noCode" : true
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-09T16:25:56.557902-03:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-09T16:26:28.490994-03:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "avDKTx2PDQC5wG89AzhpRw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "**Details.** Individual transformation details can be observed in the following view:"
+						},
+						{
+							"__type" : "exampleSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-09T16:26:30.555297-03:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-09T16:26:30.555297-03:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "yZ4LUh2PDQC5wrMmAzhpRw=="
+							},
+							"exampleSelector" : "executeIssueTrackerLenses",
+							"previewHeight" : 500,
+							"previewShowSelector" : "gtStepsTextInputAndOutputViewFor:",
+							"exampleBehaviorName" : "LensesExamples",
+							"codeExpanded" : false,
+							"previewExpanded" : true,
+							"noCode" : true
 						}
 					]
 				},

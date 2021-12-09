@@ -150,7 +150,7 @@
 					"__type" : "uid",
 					"uidString" : "NxizKvSODQCOG2CWBj9b0w=="
 				},
-				"exampleSelector" : "amazonGermanyLenses",
+				"exampleSelector" : "mergeAddressLinesLenses",
 				"previewHeight" : 130,
 				"previewShowSelector" : "gtLensesFor:",
 				"exampleBehaviorName" : "LensesAddressShowcase",
@@ -227,7 +227,7 @@
 					"__type" : "uid",
 					"uidString" : "/82ptvSODQC1XA3tDAeEhg=="
 				},
-				"exampleSelector" : "executeAmazonGermanLenses",
+				"exampleSelector" : "executeMergeAddressLinesLenses",
 				"previewHeight" : 180,
 				"previewShowSelector" : "gtOutputFor:context:",
 				"exampleBehaviorName" : "LensesAddressShowcase",
