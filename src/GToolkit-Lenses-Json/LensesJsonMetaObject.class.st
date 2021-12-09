@@ -1,33 +1,33 @@
 Class {
-	#name : #LensesJsonMetaProperty,
+	#name : #LensesJsonMetaObject,
 	#superclass : #Object,
 	#instVars : [
 		'type',
-		'property'
+		'object'
 	],
 	#category : #'GToolkit-Lenses-Json-Support'
 }
 
 { #category : #accessing }
-LensesJsonMetaProperty >> property [
+LensesJsonMetaObject >> object [
 
-	^ property
+	^ object
 ]
 
 { #category : #converting }
-LensesJsonMetaProperty >> property: aProperty [
+LensesJsonMetaObject >> object: anObject [
 
-	property := aProperty
+	object := anObject
 ]
 
 { #category : #accessing }
-LensesJsonMetaProperty >> type [
+LensesJsonMetaObject >> type [
 
 	^ type
 ]
 
 { #category : #accessing }
-LensesJsonMetaProperty >> type: anObject [
+LensesJsonMetaObject >> type: anObject [
 
 	type := anObject
 ]

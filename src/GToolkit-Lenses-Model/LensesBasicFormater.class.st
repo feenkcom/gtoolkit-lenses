@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'format'
 	],
-	#category : #'GToolkit-Lenses-Model-Utilities'
+	#category : #'GToolkit-Lenses-Model-Support'
 }
 
 { #category : #converting }

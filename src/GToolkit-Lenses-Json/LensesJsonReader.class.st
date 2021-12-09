@@ -33,7 +33,7 @@ LensesJsonReader >> readOn: aStream [
 
 	LensesJsonUtility commonMappingsFor: aWriter.
 
-	lenses := aWriter nextAs: LensesJsonMetaProperty.
+	lenses := aWriter nextAs: LensesJsonMetaObject.
 
 	^ lenses
 ]

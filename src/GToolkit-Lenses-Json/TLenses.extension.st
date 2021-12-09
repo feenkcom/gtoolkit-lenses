@@ -4,7 +4,7 @@ Extension { #name : #TLenses }
 TLenses >> asJsonString [
 
 	^ LensesJsonWriter new
-		  lenses: (LensesJsonMetaProperty new property: self);
+		  lenses: (LensesJsonMetaObject new object: self);
 		  write
 ]
 
@@ -15,14 +15,16 @@ TLenses classSide >> jsonMappingV1Asociations [
 	Instance variable name is a string.
 	Schema name is a class or nil."
 
-	^ nil
+	^ LensesJsonUtility jsonMappingV1AssociationsFor: self
 ]
 
 { #category : #'*GToolkit-Lenses-Json' }
 TLenses classSide >> jsonMappingV1Name [
+
 	"Use a default name computed by {{gtMethod:LensesJsonUtility class>>#jsonMappingV1PropertyNameFor:}}"
 
-	^ nil
+	<lensesModelTypes>
+	^ LensesJsonUtility jsonMappingV1PropertyNameFor: self
 ]
 
 { #category : #'*GToolkit-Lenses-Json' }

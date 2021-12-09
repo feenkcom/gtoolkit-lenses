@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'string'
 	],
-	#category : #'GToolkit-Lenses-Model-Utilities'
+	#category : #'GToolkit-Lenses-Model-Support'
 }
 
 { #category : #'instance creation' }

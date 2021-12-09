@@ -7,20 +7,21 @@ Class {
 { #category : #'api - json' }
 LensesJsonUtility class >> commonMappingsFor: aMapper [
 
-	aMapper for: LensesJsonMetaProperty customDo: [ :mapping | 
+	aMapper for: LensesJsonMetaObject customDo: [ :mapping | 
 		mapping writer: [ :aWriter :aMeta | 
-			self writeMetaProperty: aMeta on: aWriter ].
-		mapping reader: [ :aReader | self parseMetaPropertyOn: aReader ] ].
+			self writeMeta: aMeta on: aWriter ].
+		mapping reader: [ :aReader | self parseMetaOn: aReader ] ].
 
-	aMapper for: LensesJsonPropertyCollection customDo: [ :mapping | 
+	aMapper for: LensesJsonMetaCollection customDo: [ :mapping | 
 		mapping writer: [ :aWriter :aCollection | 
 			self writePropertyCollection: aCollection on: aWriter ].
 		mapping reader: [ :aReader | 
 			self parsePropertyCollectionOn: aReader ] ].
 
-	TLenses users do: [ :eachUser | 
-		eachUser isClass ifTrue: [ 
-			eachUser instanceSide jsonMappingV1On: aMapper ] ]
+	LensesJsonTypes objectModelTypes keysAndValuesDo: [ :aName :aClass | 
+		(aClass respondsTo: #jsonMappingV1On:)
+			ifTrue: [ aClass jsonMappingV1On: aMapper ]
+			ifFalse: [ LensesJsonUtility jsonMappingV1For: aClass on: aMapper ] ].
 ]
 
 { #category : #'api - json' }
@@ -36,7 +37,11 @@ LensesJsonUtility class >> jsonMappingV1For: aPropertyClass on: aNeoJSONMapper [
 	| aName aPropertyValues |
 	aName := aPropertyClass jsonMappingV1Name ifNil: [ 
 		         self jsonMappingV1PropertyNameFor: aPropertyClass ].
-	aPropertyValues := aPropertyClass jsonMappingV1Asociations ifNil: [ 
+	aPropertyValues := (aPropertyClass respondsTo:
+		                    #jsonMappingV1Asociations)
+		                   ifTrue: [ 
+		                   aPropertyClass jsonMappingV1Asociations ]
+		                   ifFalse: [ 
 		                   self jsonMappingV1AssociationsFor: aPropertyClass ].
 
 	aNeoJSONMapper for: aPropertyClass customDo: [ :mapping | 
@@ -57,28 +62,21 @@ LensesJsonUtility class >> jsonMappingV1PropertyNameFor: aPropertyClass [
 	aName := aPropertyClass name.
 	(aName beginsWith: 'Lenses') ifTrue: [ 
 		aName := aName last: aName size - 6 ].
-	(aName endsWith: 'Property') ifTrue: [ 
-		aName := aName first: aName size - 8 ].
+	(aName endsWith: 'Lens') ifTrue: [ 
+		aName := aName first: aName size - 4 ].
 	aName := aName ifEmpty: [ aPropertyClass name ].
 	^ aName asLowercase
 ]
 
 { #category : #'private - json' }
-LensesJsonUtility class >> parseMetaPropertyOn: aReader [
+LensesJsonUtility class >> parseMetaOn: aReader [
 
 	| aLenseType aClass aLens |
 	aReader parseMapKeysDo: [ :aKey | 
 		aKey = 'type' ifTrue: [ 
 			aLenseType := aReader parseValue.
-			aClass := TLenses users
-				          detect: [ :eachClass | 
-					          eachClass isClass and: [ 
-						          (eachClass jsonMappingV1Name ifNil: [ 
-							           self jsonMappingV1PropertyNameFor: eachClass ])
-						          = aLenseType ] ]
-				          ifNone: [ 
-				          self error: ('Unknown lense type: {1}' format: aKey) ] ].
-		aKey = 'property' ifTrue: [ 
+			aClass := LensesJsonTypes classOfJsonName: aLenseType ].
+		aKey = 'object' ifTrue: [ 
 			aClass ifNil: [ 
 				self error: 'Type key must be defined first, then a content' ].
 			aLens := aReader nextAs: aClass ] ].
@@ -112,16 +110,16 @@ LensesJsonUtility class >> parseProperty: aPropertyClass values: aPropertyValues
 { #category : #'private - json' }
 LensesJsonUtility class >> parsePropertyCollectionOn: aReader [
 
-	^ aReader nextListAs: LensesJsonMetaProperty
+	^ aReader nextListAs: LensesJsonMetaObject
 ]
 
 { #category : #'private - json' }
 LensesJsonUtility class >> parsePropertyField: anAssoc on: aReader [
 
 	"anAssoc can be:
-		'name' -> nil                    ...indicating a simple value type
-		'lens' -> TLensesProperty        ...indicating a property type 
-		'lenses' -> { TLensesProperty }  ...indicating a collection of properties 
+		'name' -> nil            ...indicating a simple value type
+		'lens' -> TLenses        ...indicating a property type 
+		'lenses' -> { TLenses }  ...indicating a collection of properties 
 	"
 
 	| aValueSchema aValueName |
@@ -131,10 +129,10 @@ LensesJsonUtility class >> parsePropertyField: anAssoc on: aReader [
 	aValueSchema ifNil: [ ^ aReader next ].
 
 	aValueSchema isCollection ifTrue: [ 
-		^ aReader nextAs: LensesJsonPropertyCollection ].
+		^ aReader nextAs: LensesJsonMetaCollection ].
 
-	aValueSchema = TLenses ifTrue: [ 
-		^ aReader nextAs: LensesJsonMetaProperty ].
+	aValueSchema isClass ifTrue: [ 
+		^ aReader nextAs: LensesJsonMetaObject ].
 
 	self error: ('Unknown "{1}" field schema: {2}' format: { 
 				 aValueName.
@@ -142,23 +140,23 @@ LensesJsonUtility class >> parsePropertyField: anAssoc on: aReader [
 ]
 
 { #category : #'private - json' }
-LensesJsonUtility class >> writeMetaProperty: aMeta on: aWriter [
+LensesJsonUtility class >> writeMeta: aMeta on: aWriter [
 
 	aWriter writeMapStreamingDo: [ :mapWriter | 
 		| aType |
 		aType := aMeta type ifNil: [ 
-			         self jsonMappingV1PropertyNameFor: aMeta property class ].
+			         self jsonMappingV1PropertyNameFor: aMeta object class ].
 		mapWriter writeKey: 'type' value: aType.
-		mapWriter writeKey: 'property' value: aMeta property ]
+		mapWriter writeKey: 'object' value: aMeta object ]
 ]
 
 { #category : #'private - json' }
 LensesJsonUtility class >> writeProperty: aProperty field: anAssoc on: mapWriter [
 
 	"anAssoc can be:
-		'name' -> nil                    ...indicating a simple value type
-		'lens' -> TLensesProperty        ...indicating a property type 
-		'lenses' -> { TLensesProperty }  ...indicating a collection of properties 
+		'name' -> nil            ...indicating a simple value type
+		'lens' -> TLenses        ...indicating a property type 
+		'lenses' -> { TLenses }  ...indicating a collection of properties 
 	"
 
 	| aValueSchema aValueName |
@@ -175,14 +173,14 @@ LensesJsonUtility class >> writeProperty: aProperty field: anAssoc on: mapWriter
 		mapWriter
 			writeKey: aValueName
 			value: (aProperty perform: aValueName)
-			as: LensesJsonPropertyCollection.
+			as: LensesJsonMetaCollection.
 		^ self ].
 
-	aValueSchema = TLenses ifTrue: [ 
+	aValueSchema isClassOrTrait ifTrue: [ 
 		mapWriter
 			writeKey: aValueName
 			value:
-			(LensesJsonMetaProperty new property:
+			(LensesJsonMetaObject new object:
 				 (aProperty perform: aValueName)).
 		^ self ].
 
@@ -205,5 +203,5 @@ LensesJsonUtility class >> writePropertyCollection: aCollection on: aWriter [
 	aWriter writeListStreamingDo: [ :jsonListWriter | 
 		aCollection do: [ :each | 
 			jsonListWriter writeElement:
-				(LensesJsonMetaProperty new property: each) ] ]
+				(LensesJsonMetaObject new object: each) ] ]
 ]
