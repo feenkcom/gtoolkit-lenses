@@ -146,7 +146,7 @@ LensesAddressShowcase >> splitStreetNameAndNumberLenses [
 	<gtExample>
 	| aLenses |
 	aLenses := Lenses new
-		split: 'address_line' destinations: #( 'street_number' ) regex: '^(.*)/([0-9a-z]+)$';
+		split: 'address_line' destinations: #( 'street_number' ) regex: '^(.*) +([0-9]+/[0-9a-z]+)$';
 		rename: 'address_line' to: 'street_name';
 		add: 'country' value: 'Germany'.  
 
@@ -161,8 +161,8 @@ LensesAddressShowcase >> splitStreetNameAndNumberResultJsonObject [
 		  add: 'full_name' -> 'Annett T Wannemaker';
 		  add: 'postal_code' -> '54429';
 		  add: 'city' -> 'Heddert';
-		  add: 'street_number' -> '23';
-		  add: 'street_name' -> 'Lützowplatz 112';
+		  add: 'street_number' -> '112/23';
+		  add: 'street_name' -> 'Lützowplatz';
 		  add: 'country' -> 'Germany';
 		  yourself
 ]
