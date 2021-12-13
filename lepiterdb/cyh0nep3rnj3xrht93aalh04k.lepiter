@@ -234,6 +234,83 @@
 				"codeExpanded" : false,
 				"previewExpanded" : true,
 				"noCode" : true
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-13T09:58:57.907561-03:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-13T09:58:57.907561-03:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "SRZnX2iPDQCDjt4RDg6SSg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "**Details.** Individual transformation details can be observed in the following view:"
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-13T09:59:04.667937-03:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-13T09:59:04.667937-03:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "RQfZX2iPDQCDkNdYDg6SSg=="
+				},
+				"exampleSelector" : "executeTagsFieldsJsonString",
+				"previewHeight" : 350,
+				"previewShowSelector" : "gtStepsInputAndOutputViewFor:",
+				"exampleBehaviorName" : "LensesAddressShowcase",
+				"codeExpanded" : false,
+				"previewExpanded" : true,
+				"noCode" : true
 			}
 		]
 	},
