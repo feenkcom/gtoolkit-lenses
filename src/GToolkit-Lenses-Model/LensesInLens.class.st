@@ -79,3 +79,13 @@ LensesInLens >> printOn: aStream [
 		nextPutAll: self name asString;
 		nextPut: $)
 ]
+
+{ #category : #'api - lenses' }
+LensesInLens >> reversed [
+
+	"Return lenses for reversed transformation"
+
+	^ self class new
+		  name: self name;
+		  lenses: (self lenses collect: #reversed) reversed
+]

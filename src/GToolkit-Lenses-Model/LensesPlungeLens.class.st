@@ -1,5 +1,5 @@
 Class {
-	#name : #LensesHoistLens,
+	#name : #LensesPlungeLens,
 	#superclass : #Object,
 	#traits : 'TLenses',
 	#classTraits : 'TLenses classTrait',
@@ -11,13 +11,13 @@ Class {
 }
 
 { #category : #visiting }
-LensesHoistLens >> accept: aVisitor [
+LensesPlungeLens >> accept: aVisitor [
 
-	^ aVisitor visitLensesHoistLens: self
+	^ aVisitor visitLensesPlungeLens: self
 ]
 
-{ #category : #printing }
-LensesHoistLens >> gtDisplayOn: aStream [
+{ #category : #accessing }
+LensesPlungeLens >> gtDisplayOn: aStream [
 
 	self name ifNil: [ 
 		super gtDisplayOn: aStream.
@@ -27,38 +27,38 @@ LensesHoistLens >> gtDisplayOn: aStream [
 		^ self ].
 
 	aStream
-		nextPutAll: 'Hoist ';
+		nextPutAll: 'Plunge ';
 		nextPutAll: self name asString;
-		nextPutAll: ' from ';
+		nextPutAll: ' into ';
 		nextPutAll: self host asString
 ]
 
 { #category : #accessing }
-LensesHoistLens >> host [
+LensesPlungeLens >> host [
 
 	^ host
 ]
 
 { #category : #accessing }
-LensesHoistLens >> host: anObject [
+LensesPlungeLens >> host: anObject [
 
 	host := anObject
 ]
 
 { #category : #accessing }
-LensesHoistLens >> name [
+LensesPlungeLens >> name [
 
 	^ name
 ]
 
 { #category : #accessing }
-LensesHoistLens >> name: anObject [
+LensesPlungeLens >> name: anObject [
 
 	name := anObject
 ]
 
 { #category : #printing }
-LensesHoistLens >> printOn: aStream [
+LensesPlungeLens >> printOn: aStream [
 
 	super printOn: aStream.
 
@@ -66,19 +66,9 @@ LensesHoistLens >> printOn: aStream [
 	self host ifNil: [ ^ self ].
 
 	aStream
-		nextPutAll: '(hoist ';
+		nextPutAll: '(plunge ';
 		nextPutAll: self name asString;
-		nextPutAll: ' from ';
+		nextPutAll: ' into ';
 		nextPutAll: self host asString;
 		nextPut: $)
-]
-
-{ #category : #'api - lenses' }
-LensesHoistLens >> reversed [
-
-	"Return lenses for reversed transformation"
-
-	^ LensesPlungeLens new
-		  name: self name;
-		  host: self host
 ]

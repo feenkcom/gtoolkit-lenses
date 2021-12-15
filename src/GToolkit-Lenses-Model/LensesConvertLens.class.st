@@ -5,7 +5,8 @@ Class {
 	#classTraits : 'TLenses classTrait',
 	#instVars : [
 		'name',
-		'toMapping'
+		'toMapping',
+		'reversedMapping'
 	],
 	#category : #'GToolkit-Lenses-Model-Lenses'
 }
@@ -29,6 +30,18 @@ LensesConvertLens >> convert: anOldValue ifPresent: presentBlock ifAbsent: absen
 LensesConvertLens >> convert: anOldValue into: aNewValue [
 
 	self toMapping at: anOldValue put: aNewValue
+]
+
+{ #category : #private }
+LensesConvertLens >> createReversedMapping [
+
+	| aDictionary |
+	aDictionary := Dictionary new: self toMapping size.
+	
+	self toMapping keysAndValuesDo: [ :aKey :aValue | 
+		aDictionary at: aValue put: aKey ].
+		
+	^ aDictionary
 ]
 
 { #category : #printing }
@@ -81,6 +94,30 @@ LensesConvertLens >> printOn: aStream [
 		print: self toMapping size;
 		nextPutAll: (' mapping' asPluralBasedOn: self toMapping size);
 		nextPut: $)
+]
+
+{ #category : #'api - lenses' }
+LensesConvertLens >> reversed [
+
+	"Return lenses for reversed transformation"
+
+	^ self class new
+		  name: self name;
+		  toMapping: self reversedMapping;
+		  reversedMapping: self toMapping
+]
+
+{ #category : #accessing }
+LensesConvertLens >> reversedMapping [
+
+	^ reversedMapping ifNil: [ 
+		  reversedMapping := self createReversedMapping ]
+]
+
+{ #category : #accessing }
+LensesConvertLens >> reversedMapping: aDictionary [
+
+	reversedMapping := aDictionary
 ]
 
 { #category : #accessing }

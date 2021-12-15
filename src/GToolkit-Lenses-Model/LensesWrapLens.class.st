@@ -4,7 +4,8 @@ Class {
 	#traits : 'TLenses',
 	#classTraits : 'TLenses classTrait',
 	#instVars : [
-		'name'
+		'name',
+		'listClass'
 	],
 	#category : #'GToolkit-Lenses-Model-Lenses'
 }
@@ -25,6 +26,18 @@ LensesWrapLens >> gtDisplayOn: aStream [
 	aStream
 		nextPutAll: 'Wrap ';
 		nextPutAll: self name asString
+]
+
+{ #category : #accessing }
+LensesWrapLens >> listClass [
+
+	^ listClass ifNil: [ Array ]
+]
+
+{ #category : #accessing }
+LensesWrapLens >> listClass: anObject [
+
+	listClass := anObject
 ]
 
 { #category : #accessing }

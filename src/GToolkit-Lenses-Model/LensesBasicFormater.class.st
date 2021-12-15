@@ -13,6 +13,17 @@ LensesBasicFormater >> asLensesFormater [
 	^ self
 ]
 
+{ #category : #converting }
+LensesBasicFormater >> asLensesSplitter [
+
+	| aRegex |
+	aRegex := self format
+		          copyWithRegex: '\{\d+\}'
+		          matchesReplacedWith: '(.*)'.
+
+	^ LensesRegexSplitter forString: '^' , aRegex , '$'
+]
+
 { #category : #accessing }
 LensesBasicFormater >> format [
 

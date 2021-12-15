@@ -143,6 +143,40 @@ LensesJsonExecutor >> visitLensesMergeLens: aLens [
 		ifAbsent: [ self step at: aLens firstName put: aLens defaultValue ]
 ]
 
+{ #category : #accessing }
+LensesJsonExecutor >> visitLensesPlungeLens: aLens [
+
+	self assert: self step lens == aLens.
+
+	"Copy (or initialize) the existing host value"
+	self step
+		at: aLens host
+		ifPresent: [ :aHostValue | 
+		self step at: aLens host put: aHostValue copy ]
+		ifAbsent: [ self step at: aLens host put: aLens defaultValue ].
+
+	"Plunge name"
+	self step
+		at: aLens name
+		ifPresent: [ :aNameValue | 
+			self step
+				at: aLens host
+				ifPresent: [ :aHostValue | 
+					aHostValue at: aLens name put: aNameValue.
+					self step removeKey: aLens name ]
+				ifAbsent: [ 
+					self error:
+						('Host property is not available: {1}' format: aLens host) ] ]
+		ifAbsent: [ 
+			self step
+				at: aLens host
+				ifPresent: [ :aHostValue | 
+					aHostValue at: aLens name put: aLens defaultValue ]
+				ifAbsent: [ 
+					self error:
+						('Host property is not available: {1}' format: aLens host) ] ]
+]
+
 { #category : #visiting }
 LensesJsonExecutor >> visitLensesRemoveLens: aLens [
 

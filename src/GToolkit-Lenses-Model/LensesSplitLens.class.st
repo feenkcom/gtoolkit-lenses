@@ -6,7 +6,8 @@ Class {
 	#instVars : [
 		'name',
 		'destinations',
-		'splitter'
+		'splitter',
+		'mergeFormat'
 	],
 	#category : #'GToolkit-Lenses-Model-Lenses'
 }
@@ -21,6 +22,12 @@ LensesSplitLens >> accept: aVisitor [
 LensesSplitLens >> allDestinations [
 
 	^ Array with: self name withAll: self destinations
+]
+
+{ #category : #accessing }
+LensesSplitLens >> destination: aString [
+
+	self destinations: { aString }
 ]
 
 { #category : #accessing }
@@ -47,6 +54,26 @@ LensesSplitLens >> gtDisplayOn: aStream [
 		nextPutAll: self name asString
 ]
 
+{ #category : #initialization }
+LensesSplitLens >> initialize [
+
+	super initialize.
+
+	mergeFormat := LensesNoValue uniqueInstance
+]
+
+{ #category : #accessing }
+LensesSplitLens >> mergeFormat [
+
+	^ mergeFormat value
+]
+
+{ #category : #accessing }
+LensesSplitLens >> mergeFormat: aFormat [
+
+	mergeFormat := LensesValue value: aFormat
+]
+
 { #category : #accessing }
 LensesSplitLens >> name [
 
@@ -70,6 +97,18 @@ LensesSplitLens >> printOn: aStream [
 		nextPut: $(;
 		nextPutAll: self name asString;
 		nextPut: $)
+]
+
+{ #category : #'api - lenses' }
+LensesSplitLens >> reversed [
+
+	"Return lenses for reversed transformation.
+	Notice that the merge format must be defined explicitly."
+
+	^ LensesMergeLens new
+		  firstName: self name;
+		  secondName: self destinations first;
+		  format: self mergeFormat
 ]
 
 { #category : #accessing }

@@ -17,29 +17,6 @@ Class {
 }
 
 { #category : #'api - steps' }
-LensesInStep >> at: aKey ifPresent: aPresentBlock ifAbsent: anAbsentBlock [
-
-	self output
-		at: self property name
-		ifPresent: [ :aChild | 
-			aChild at: aKey ifPresent: aPresentBlock ifAbsent: anAbsentBlock ]
-		ifAbsent: [ 
-			self error:
-				('Child object named {1} is missing' format: self property name) ]
-]
-
-{ #category : #'api - steps' }
-LensesInStep >> at: aKey put: aValue [
-
-	self output
-		at: self property name
-		ifPresent: [ :aChild | aChild at: aKey put: aValue ]
-		ifAbsent: [ 
-			self error:
-				('Child object named {1} is missing' format: self property name) ]
-]
-
-{ #category : #'api - steps' }
 LensesInStep >> beFullOutput [
 
 	isScopedOutput := false.

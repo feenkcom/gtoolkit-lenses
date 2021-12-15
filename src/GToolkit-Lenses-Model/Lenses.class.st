@@ -59,6 +59,16 @@ Lenses >> name: aString [
 	self schemaName: aString
 ]
 
+{ #category : #'api - lenses' }
+Lenses >> reversed [
+
+	"Return lenses for reversed transformation"
+
+	^ self class new
+		  schemaName: self schemaName;
+		  lenses: (self lenses collect: #reversed) reversed
+]
+
 { #category : #accessing }
 Lenses >> schemaName [
 

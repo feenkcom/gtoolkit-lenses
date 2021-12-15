@@ -23,3 +23,11 @@ TLenses >> nextStepFrom: aPreviousStep [
 		  lens: self;
 		  input: aPreviousStep output.
 ]
+
+{ #category : #'api - lenses' }
+TLenses >> reversed [
+
+	"Return lenses for reversed transformation"
+
+	^ self explicitRequirement
+]

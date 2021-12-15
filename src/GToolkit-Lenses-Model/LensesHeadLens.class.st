@@ -51,3 +51,11 @@ LensesHeadLens >> printOn: aStream [
 		nextPutAll: self name asString;
 		nextPut: $)
 ]
+
+{ #category : #'api - lenses' }
+LensesHeadLens >> reversed [
+
+	"Return lenses for reversed transformation"
+
+	^ LensesWrapLens new name: self name
+]

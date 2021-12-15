@@ -4,7 +4,8 @@ Class {
 	#traits : 'TLenses',
 	#classTraits : 'TLenses classTrait',
 	#instVars : [
-		'name'
+		'name',
+		'defaultValue'
 	],
 	#category : #'GToolkit-Lenses-Model-Lenses'
 }
@@ -13,6 +14,20 @@ Class {
 LensesRemoveLens >> accept: aVisitor [
 
 	^ aVisitor visitLensesRemoveLens: self
+]
+
+{ #category : #accessing }
+LensesRemoveLens >> defaultValue [
+
+	defaultValue ifNil: [ defaultValue := LensesNoValue uniqueInstance ].
+
+	^ defaultValue value
+]
+
+{ #category : #accessing }
+LensesRemoveLens >> defaultValue: anObject [
+
+	defaultValue := LensesValue value: anObject
 ]
 
 { #category : #printing }
@@ -25,6 +40,14 @@ LensesRemoveLens >> gtDisplayOn: aStream [
 	aStream
 		nextPutAll: 'Remove ';
 		nextPutAll: self name asString
+]
+
+{ #category : #initialization }
+LensesRemoveLens >> initialize [
+
+	super initialize.
+
+	defaultValue := LensesNoValue uniqueInstance
 ]
 
 { #category : #accessing }
@@ -50,4 +73,14 @@ LensesRemoveLens >> printOn: aStream [
 		nextPut: $(;
 		nextPutAll: self name asString;
 		nextPut: $)
+]
+
+{ #category : #'api - lenses' }
+LensesRemoveLens >> reversed [
+
+	"Return lenses for reversed transformation"
+
+	^ LensesAddLens new
+		name: self name;
+		value: self defaultValue
 ]

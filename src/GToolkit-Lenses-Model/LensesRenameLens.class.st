@@ -61,6 +61,16 @@ LensesRenameLens >> printOn: aStream [
 		nextPut: $)
 ]
 
+{ #category : #'api - lenses' }
+LensesRenameLens >> reversed [
+
+	"Return lenses for reversed transformation"
+
+	^ self class new
+		  source: self destination;
+		  destination: self source
+]
+
 { #category : #accessing }
 LensesRenameLens >> source [
 

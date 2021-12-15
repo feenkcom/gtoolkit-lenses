@@ -13,6 +13,19 @@ LensesRegexSplitter class >> forString: aString [
 	^ self new string: aString
 ]
 
+{ #category : #printing }
+LensesRegexSplitter >> printOn: aStream [
+
+	super printOn: aStream.
+
+	self string ifNil: [ ^ self ].
+
+	aStream
+		nextPut: $(;
+		nextPutAll: self string asString;
+		nextPut: $)
+]
+
 { #category : #accessing }
 LensesRegexSplitter >> string [
 

@@ -52,6 +52,21 @@ LensesExamples >> executeIssueTrackerLenses [
 	^ aResult
 ]
 
+{ #category : #'examples - reversed' }
+LensesExamples >> executeReversedIssueTrackerLenses [
+
+	<gtExample>
+	| aLenses aResult anInput |
+	aLenses := self reversedLensesForIssueTracker.
+	anInput := self executeIssueTrackerLenses output object.
+
+	aResult := aLenses execute: anInput.
+
+	"self assert: aResult output object size equals: 5."
+
+	^ aResult
+]
+
 { #category : #'examples - lenses' }
 LensesExamples >> executeTwoRenames [
 
@@ -133,7 +148,9 @@ LensesExamples >> lensesForIssueTracker [
 			(LensesHoistLens new
 				 name: 'category';
 				 host: 'labels').
-			(LensesRemoveLens new name: 'labels') }.
+			(LensesRemoveLens new
+				 name: 'labels';
+				 defaultValue: Dictionary new )}.
 
 	self assert: aLenses lenses size equals: 7.
 
@@ -270,6 +287,18 @@ LensesExamples >> parseIssueTrackerJsonString [
 
 	self assert: aLenses isNotNil.
 	self assert: aLenses class equals: Lenses.
+
+	^ aLenses
+]
+
+{ #category : #'examples - reversed' }
+LensesExamples >> reversedLensesForIssueTracker [
+
+	<gtExample>
+	| aLenses |
+	aLenses := self lensesForIssueTracker reversed.
+	
+	self assert: aLenses lenses size equals: 7.
 
 	^ aLenses
 ]

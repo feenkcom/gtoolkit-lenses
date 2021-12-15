@@ -39,16 +39,43 @@ TLensesComposition >> remove: aName [
 ]
 
 { #category : #'api - lens composition' }
+TLensesComposition >> remove: aName defaultValue: aValue [
+
+	self addLens: (LensesRemoveLens new
+			 name: aName;
+			 defaultValue: aValue)
+]
+
+{ #category : #'api - lens composition' }
 TLensesComposition >> rename: anOldName to: aNewName [
 
 	self addLens: (LensesRenameLens new source: anOldName; destination: aNewName)
 ]
 
 { #category : #'api - lens composition' }
-TLensesComposition >> split: aFirstName destinations: aSecondName regex: aRegex [
+TLensesComposition >> split: aFirstName destination: aSecondName regex: aRegex [
 
 	self addLens: (LensesSplitLens new
 			 name: aFirstName;
-			 destinations: aSecondName;
+			 destination: aSecondName;
+			 splitter: (LensesRegexSplitter forString: aRegex))
+]
+
+{ #category : #'api - lens composition' }
+TLensesComposition >> split: aFirstName destination: aSecondName regex: aRegex mergeFormat: aMergeFormat [
+
+	self addLens: (LensesSplitLens new
+			 name: aFirstName;
+			 destination: aSecondName;
+			 splitter: (LensesRegexSplitter forString: aRegex);
+			 mergeFormat: aMergeFormat)
+]
+
+{ #category : #'api - lens composition' }
+TLensesComposition >> split: aFirstName destinations: aCollectionOfNames regex: aRegex [
+
+	self addLens: (LensesSplitLens new
+			 name: aFirstName;
+			 destinations: aCollectionOfNames;
 			 splitter: (LensesRegexSplitter forString: aRegex))
 ]

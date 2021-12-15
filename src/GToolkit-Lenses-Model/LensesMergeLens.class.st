@@ -80,6 +80,17 @@ LensesMergeLens >> printOn: aStream [
 		nextPut: $)
 ]
 
+{ #category : #'api - lenses' }
+LensesMergeLens >> reversed [
+
+	"Return lenses for reversed transformation"
+
+	^ LensesSplitLens new
+		  name: self firstName;
+		  destination: self secondName;
+		  splitter: self format asLensesSplitter
+]
+
 { #category : #accessing }
 LensesMergeLens >> secondName [
 

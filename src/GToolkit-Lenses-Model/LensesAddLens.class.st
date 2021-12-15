@@ -57,6 +57,16 @@ LensesAddLens >> printOn: aStream [
 		nextPut: $)
 ]
 
+{ #category : #'api - lenses' }
+LensesAddLens >> reversed [
+
+	"Return lenses for reversed transformation"
+
+	^ LensesRemoveLens new
+		  name: self name;
+		  defaultValue: self value
+]
+
 { #category : #accessing }
 LensesAddLens >> value [
 
