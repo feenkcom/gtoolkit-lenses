@@ -311,6 +311,160 @@
 				"codeExpanded" : false,
 				"previewExpanded" : true,
 				"noCode" : true
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-15T18:13:52.604937-03:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-15T18:13:52.604937-03:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "l10HhZePDQCiy62WBh8k3w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "**Reversed Lenses.** If we apply the following reversed lenses:"
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-15T18:14:02.68237-03:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-15T18:14:02.68237-03:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "L4SrhZePDQCizROvBh8k3w=="
+				},
+				"exampleSelector" : "reversedSplitStreetNameAndNumberLenses",
+				"previewHeight" : 110,
+				"previewShowSelector" : "gtLensesFor:",
+				"exampleBehaviorName" : "LensesAddressShowcase",
+				"codeExpanded" : false,
+				"previewExpanded" : true,
+				"noCode" : true
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-15T18:14:20.430428-03:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-15T18:14:20.430428-03:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "MViqhpePDQCizynrBh8k3w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "**Reversed Output.** The resulting address will look as follows:"
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-15T18:14:24.458971-03:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-15T18:14:24.458971-03:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Bc33hpePDQCi0dvHBh8k3w=="
+				},
+				"exampleSelector" : "executeReversedSplitStreetNameAndNumberLenses",
+				"previewHeight" : 160,
+				"previewShowSelector" : "gtOutputFor:context:",
+				"exampleBehaviorName" : "LensesAddressShowcase",
+				"codeExpanded" : false,
+				"previewExpanded" : true,
+				"noCode" : true
 			}
 		]
 	},

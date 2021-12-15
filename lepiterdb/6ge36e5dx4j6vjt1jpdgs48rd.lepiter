@@ -316,6 +316,160 @@
 							"codeExpanded" : false,
 							"previewExpanded" : true,
 							"noCode" : true
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-15T19:31:19.9049-03:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-15T19:31:19.9049-03:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "XTwImpiPDQCCF9VoByH0nw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "**Reversed Lenses.** If we apply the following reversed lenses:"
+						},
+						{
+							"__type" : "exampleSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-15T19:31:22.881657-03:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-15T19:31:22.881657-03:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "olY/mpiPDQCCGcE+ByH0nw=="
+							},
+							"exampleSelector" : "reversedLensesForIssueTracker",
+							"previewHeight" : 230,
+							"previewShowSelector" : "gtLensesFor:",
+							"exampleBehaviorName" : "LensesExamples",
+							"codeExpanded" : false,
+							"previewExpanded" : true,
+							"noCode" : true
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-15T19:31:55.952396-03:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-15T19:31:55.952396-03:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "0jUtnJiPDQCCG2HJByH0nw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "**Reversed Output.** The resulting address will look as follows:"
+						},
+						{
+							"__type" : "exampleSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-15T19:32:02.268255-03:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2021-12-15T19:32:02.268255-03:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "q1SYnJiPDQCCHcR4ByH0nw=="
+							},
+							"exampleSelector" : "executeReversedIssueTrackerLenses",
+							"previewHeight" : 230,
+							"previewShowSelector" : "gtOutputTextFor:context:",
+							"exampleBehaviorName" : "LensesExamples",
+							"codeExpanded" : false,
+							"previewExpanded" : true,
+							"noCode" : true
 						}
 					]
 				},
