@@ -131,16 +131,17 @@ LensesJsonExecutor >> visitLensesMergeLens: aLens [
 
 	self step
 		at: aLens firstName
-		ifPresent: [ :aFirstValue | 
-			self step
+		ifPresent: [ :aFirstValue :aFirstObject | 
+			aFirstObject
 				at: aLens secondName
 				ifPresent: [ :aSecondValue | 
 					| aNewValue |
 					aNewValue := aLens formatValue: aFirstValue value: aSecondValue.
-					self step at: aLens firstName put: aNewValue.
-					self step removeKey: aLens secondName ]
+					aFirstObject at: aLens firstName put: aNewValue.
+					aFirstObject removeKey: aLens secondName ]
 				ifAbsent: [ "ignore" ] ]
-		ifAbsent: [ self step at: aLens firstName put: aLens defaultValue ]
+		ifAbsent: [ :anObject | 
+			anObject at: aLens firstName put: aLens defaultValue ]
 ]
 
 { #category : #accessing }
@@ -195,11 +196,11 @@ LensesJsonExecutor >> visitLensesRenameLens: aLens [
 
 	self step
 		at: aLens source
-		ifPresent: [ :aValue | 
-			self step at: aLens destination put: aValue.
-			self step removeKey: aLens source ]
-		ifAbsent: [ 
-		self step at: aLens destination put: aLens defaultValue ]
+		ifPresent: [ :aValue :anObject | 
+			anObject at: aLens destination put: aValue.
+			anObject removeKey: aLens source ]
+		ifAbsent: [ :anObject | 
+			anObject at: aLens destination put: aLens defaultValue ]
 ]
 
 { #category : #visiting }

@@ -12,7 +12,7 @@ TLenses >> accept: aVisitor [
 { #category : #'api - lenses' }
 TLenses >> defaultValue [
 
-	^ self error: 'Default value is not defined (supported).'
+	^ self error: 'Default value is not supported.'
 ]
 
 { #category : #'api - lenses' }

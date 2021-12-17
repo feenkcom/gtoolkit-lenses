@@ -23,6 +23,15 @@ TLensesComposition >> hoist: aName from: aHost [
 	self addLens: (LensesHoistLens new name: aName; host: aHost)
 ]
 
+{ #category : #accessing }
+TLensesComposition >> in: aName do: aBlock [
+
+	| aLens |
+	aLens := LensesInLens new name: aName.
+	self addLens: aLens.
+	aBlock value: aLens
+]
+
 { #category : #'api - lens composition' }
 TLensesComposition >> merge: aFirstName and: aSecondName format: aFormater [
 

@@ -6,7 +6,12 @@ Trait {
 { #category : #converting }
 TLensesJsonObjectAccess >> asFollowingOutput [
 
-	^ LensesTransformedJsonObject new object: self object copy
+	| aCopy |
+	aCopy := self object isCollection
+		         ifTrue: [ self object collect: #copy ]
+		         ifFalse: [ self object copy ].
+
+	^ LensesTransformedJsonObject new object: aCopy
 ]
 
 { #category : #converting }
@@ -21,19 +26,24 @@ TLensesJsonObjectAccess >> at: aKey ifPresent: aPresentBlock ifAbsent: anAbsentB
 	self object isDictionary ifTrue: [ 
 		self object
 			at: aKey
-			ifPresent: aPresentBlock
-			ifAbsent: anAbsentBlock.
+			ifPresent: [ :aValue | 
+				aPresentBlock cull: aValue cull: self object ]
+			ifAbsent: [ 
+				anAbsentBlock cull: self object ].
 		^ self ].
 
 	self object isArray ifTrue: [ 
 		self object do: [ :eachObject | 
 			eachObject
 				at: aKey
-				ifPresent: aPresentBlock
-				ifAbsent: anAbsentBlock ].
+				ifPresent: [ :aValue | 
+					aPresentBlock cull: aValue cull: eachObject ]
+				ifAbsent: [ 
+					anAbsentBlock cull: eachObject ] ].
 		^ self ].
-	
-	self error: ('Unknown JSON object: {1}' format: self object printString)
+
+	self error:
+		('Unknown JSON object: {1}' format: self object printString)
 ]
 
 { #category : #'api - json' }

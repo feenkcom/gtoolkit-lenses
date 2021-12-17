@@ -35,6 +35,27 @@ LensesAddressShowcase >> executeMergeAddressLinesLenses [
 	^ aResult
 ]
 
+{ #category : #'examples - in addresses' }
+LensesAddressShowcase >> executeRenameUserAddressesLenses [
+
+	<gtExample>
+	| aLenses aResult |
+	aLenses := self renameUserAddressesLenses.
+
+	aResult := aLenses execute: self userWithAddressesJsonString.
+
+	self
+		assert: aResult input object
+		equals:
+		(LensesInitialJsonObject fromString:
+			 self userWithAddressesJsonString) object.
+	self
+		assert: aResult output object
+		equals: self renamedUserAddressesJsonObject.
+
+	^ aResult
+]
+
 { #category : #'examples - merge' }
 LensesAddressShowcase >> executeReversedMergeAddressLinesLenses [
 
@@ -69,7 +90,7 @@ LensesAddressShowcase >> executeReversedSplitStreetNameAndNumberLenses [
 	^ aResult
 ]
 
-{ #category : #accessing }
+{ #category : #'examples - hoist' }
 LensesAddressShowcase >> executeReversedTagsFieldsJsonString [
 
 	<gtExample>
@@ -191,6 +212,50 @@ LensesAddressShowcase >> mergedStreetNameAndNumberJsonString [
 		}'
 ]
 
+{ #category : #'examples - in addresses' }
+LensesAddressShowcase >> renameUserAddressesLenses [
+
+	<gtExample>
+	| aLenses |
+	aLenses := Lenses new 
+		rename: 'login' to: 'username';
+		in: 'addresses' do: [ :in | 
+			in
+				merge: 'address_line_one' and: 'address_line_two' format: '{1}, {2}';
+				rename: 'address_line_one' to: 'street_name';
+				add: 'country' value: 'Germany';
+				remove: 'phone_number' ].
+
+	self assert: aLenses lenses size equals: 2.
+	self assert: aLenses lenses second lenses size equals: 4.
+
+	^ aLenses
+]
+
+{ #category : #'examples - in addresses' }
+LensesAddressShowcase >> renamedUserAddressesJsonObject [
+
+	<gtExample>
+	^ OrderedDictionary new
+		  add: 'name' -> 'Annett T Wannemaker';
+		  add: 'username' -> 'wannemaker';
+		  add: 'addresses' -> { 
+					  (OrderedDictionary new
+						   add: 'street_name' -> 'Townhall Strasse, 24A Obergeschoss';
+						   add: 'postalCode' -> '234223';
+						   add: 'city' -> 'Bremen';
+						   add: 'country' -> 'Germany';
+						   yourself).
+
+					  (OrderedDictionary new
+						   add: 'street_name' -> 'Lützowplatz 112, apartment 23';
+						   add: 'postalCode' -> '54429';
+						   add: 'city' -> 'Heddert';
+						   add: 'country' -> 'Germany';
+						   yourself) };
+		  yourself
+]
+
 { #category : #'examples - hoist' }
 LensesAddressShowcase >> reversedHoistPrimaryTagLenses [
 
@@ -198,7 +263,7 @@ LensesAddressShowcase >> reversedHoistPrimaryTagLenses [
 	^ self hoistPrimaryTagLenses reversed
 ]
 
-{ #category : #accessing }
+{ #category : #'examples - hoist' }
 LensesAddressShowcase >> reversedHoistTagsResultJsonObject [
 
 	<gtExample>
@@ -300,4 +365,30 @@ LensesAddressShowcase >> tagsFieldsJsonString [
 			"active" : "true"
 		}
 	}'
+]
+
+{ #category : #'examples - in addresses' }
+LensesAddressShowcase >> userWithAddressesJsonString [
+	<gtExample>
+	
+	^ '{
+	"name" : "Annett T Wannemaker",
+	"login" : "wannemaker",
+	"addresses" : [
+		{
+			"address_line_one" : "Townhall Strasse",
+			"address_line_two" : "24A Obergeschoss",
+			"postalCode" : "234223",
+			"city" : "Bremen",
+			"phone_number": "+49-157-555-3805"
+		},
+		{
+			"address_line_one" : "Lützowplatz 112",
+			"address_line_two" : "apartment 23",
+			"postalCode" : "54429",
+			"city" : "Heddert",
+			"phone_number": "+49-157-555-3805"
+		}
+	]
+}'
 ]
