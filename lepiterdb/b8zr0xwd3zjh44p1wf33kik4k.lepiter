@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T15:28:17.422713-03:00"
+						"dateAndTimeString" : "2021-12-17T20:42:27.969314-03:00"
 					}
 				},
 				"editEmail" : {
@@ -29,12 +29,49 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T15:29:16.433055-03:00"
+						"dateAndTimeString" : "2021-12-17T20:43:32.032744-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "Tk3+RPSODQCOHFAQBj9b0w=="
+					"uidString" : "6GUB1MGPDQCRevUFAv8eDQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "This section shows how a collection of objects can be transformed. In this case, we have a collection of addresses. We tranform individual addresses."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-17T19:39:28.093122-03:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2021-12-17T19:39:28.093122-03:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "a3P18cCPDQCXgnJJAtQFvg=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -55,7 +92,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T15:29:22.280404-03:00"
+						"dateAndTimeString" : "2021-12-17T20:44:05.102067-03:00"
 					}
 				},
 				"editEmail" : {
@@ -66,15 +103,15 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T15:29:22.280404-03:00"
+						"dateAndTimeString" : "2021-12-17T20:44:05.102067-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "A4wFSvSODQCOHYQuBj9b0w=="
+					"uidString" : "G0rw2cGPDQCRfoGrAv8eDQ=="
 				},
-				"exampleSelector" : "amazonGermanyJsonString",
-				"previewHeight" : 260,
+				"exampleSelector" : "userWithAddressesJsonString",
+				"previewHeight" : 430,
 				"previewShowSelector" : "gtJSONFor:context:",
 				"exampleBehaviorName" : "LensesAddressShowcase",
 				"codeExpanded" : false,
@@ -95,7 +132,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T15:19:16.534294-03:00"
+						"dateAndTimeString" : "2021-12-17T20:44:45.939817-03:00"
 					}
 				},
 				"editEmail" : {
@@ -106,12 +143,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-17T20:44:42.734613-03:00"
+						"dateAndTimeString" : "2021-12-17T20:44:45.939817-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "O/3Tq/KODQC4G9R7DXr8Dw=="
+					"uidString" : "8UOU2cGPDQCRfCxUAv8eDQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -132,7 +169,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T15:20:36.783113-03:00"
+						"dateAndTimeString" : "2021-12-17T20:44:49.084092-03:00"
 					}
 				},
 				"editEmail" : {
@@ -143,15 +180,15 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T15:20:36.783113-03:00"
+						"dateAndTimeString" : "2021-12-17T20:44:49.084092-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "NxizKvSODQCOG2CWBj9b0w=="
+					"uidString" : "4GaP3MGPDQCRgJmyAv8eDQ=="
 				},
-				"exampleSelector" : "mergeAddressLinesLenses",
-				"previewHeight" : 130,
+				"exampleSelector" : "renameUserAddressesLenses",
+				"previewHeight" : 180,
 				"previewShowSelector" : "gtLensesFor:",
 				"exampleBehaviorName" : "LensesAddressShowcase",
 				"codeExpanded" : false,
@@ -172,7 +209,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T15:57:31.986542-03:00"
+						"dateAndTimeString" : "2021-12-17T20:45:27.688375-03:00"
 					}
 				},
 				"editEmail" : {
@@ -183,12 +220,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T18:10:01.798155-03:00"
+						"dateAndTimeString" : "2021-12-17T20:45:27.688375-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "FxCWrvSODQC1VakrDAeEhg=="
+					"uidString" : "PSrK3sGPDQCRgny8Av8eDQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -209,7 +246,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T15:59:44.984537-03:00"
+						"dateAndTimeString" : "2021-12-17T20:45:43.693766-03:00"
 					}
 				},
 				"editEmail" : {
@@ -220,15 +257,15 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-07T15:59:44.984537-03:00"
+						"dateAndTimeString" : "2021-12-17T20:45:43.693766-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "/82ptvSODQC1XA3tDAeEhg=="
+					"uidString" : "763Q38GPDQCRhF/6Av8eDQ=="
 				},
-				"exampleSelector" : "executeMergeAddressLinesLenses",
-				"previewHeight" : 180,
+				"exampleSelector" : "executeRenameUserAddressesLenses",
+				"previewHeight" : 380,
 				"previewShowSelector" : "gtOutputFor:context:",
 				"exampleBehaviorName" : "LensesAddressShowcase",
 				"codeExpanded" : false,
@@ -249,7 +286,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-13T09:56:34.924726-03:00"
+						"dateAndTimeString" : "2021-12-17T20:46:33.915785-03:00"
 					}
 				},
 				"editEmail" : {
@@ -260,12 +297,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-13T09:56:34.924726-03:00"
+						"dateAndTimeString" : "2021-12-17T20:46:33.915785-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "IaLeVmiPDQCDg/MADg6SSg=="
+					"uidString" : "RnPD4sGPDQCRhrPDAv8eDQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -286,7 +323,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-13T09:56:41.709927-03:00"
+						"dateAndTimeString" : "2021-12-17T20:46:41.209405-03:00"
 					}
 				},
 				"editEmail" : {
@@ -297,14 +334,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-13T09:56:41.709927-03:00"
+						"dateAndTimeString" : "2021-12-17T20:46:41.209405-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "j6lTV2iPDQCDhUjBDg6SSg=="
+					"uidString" : "Y0w+48GPDQCRiJDYAv8eDQ=="
 				},
-				"exampleSelector" : "executeMergeAddressLinesLenses",
+				"exampleSelector" : "executeRenameUserAddressesLenses",
 				"previewHeight" : 320,
 				"previewShowSelector" : "gtStepsInputAndOutputViewFor:",
 				"exampleBehaviorName" : "LensesAddressShowcase",
@@ -326,7 +363,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-15T17:05:20.12566-03:00"
+						"dateAndTimeString" : "2021-12-17T21:08:08.155106-03:00"
 					}
 				},
 				"editEmail" : {
@@ -337,12 +374,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-15T17:05:53.858373-03:00"
+						"dateAndTimeString" : "2021-12-17T21:08:08.155106-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "Qe69j5aPDQCKxXcHAUfz0A=="
+					"uidString" : "ekWAL8KPDQCRkx0iAv8eDQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -363,7 +400,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-15T17:06:03.680308-03:00"
+						"dateAndTimeString" : "2021-12-17T21:08:12.17163-03:00"
 					}
 				},
 				"editEmail" : {
@@ -374,15 +411,15 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-15T17:06:03.680308-03:00"
+						"dateAndTimeString" : "2021-12-17T21:08:12.17163-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "XOKKkpaPDQCKx79rAUfz0A=="
+					"uidString" : "l9EwMMKPDQCRlKeLAv8eDQ=="
 				},
-				"exampleSelector" : "reversedMergeAddressLinesLenses",
-				"previewHeight" : 130,
+				"exampleSelector" : "reversedRenameUserAddressesLenses",
+				"previewHeight" : 190,
 				"previewShowSelector" : "gtLensesFor:",
 				"exampleBehaviorName" : "LensesAddressShowcase",
 				"codeExpanded" : false,
@@ -403,7 +440,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-15T17:10:10.348913-03:00"
+						"dateAndTimeString" : "2021-12-17T20:47:02.440533-03:00"
 					}
 				},
 				"editEmail" : {
@@ -414,12 +451,12 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-15T17:10:33.644502-03:00"
+						"dateAndTimeString" : "2021-12-17T20:47:02.440533-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "v8AkoZaPDQCKyRZvAUfz0A=="
+					"uidString" : "ul945MGPDQCRi45XAv8eDQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
@@ -440,7 +477,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-15T17:10:24.58671-03:00"
+						"dateAndTimeString" : "2021-12-17T21:07:30.85256-03:00"
 					}
 				},
 				"editEmail" : {
@@ -451,15 +488,15 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-15T17:10:24.58671-03:00"
+						"dateAndTimeString" : "2021-12-17T21:07:30.85256-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "FQAYopaPDQCKy/xxAUfz0A=="
+					"uidString" : "+la6LcKPDQCRkdgSAv8eDQ=="
 				},
-				"exampleSelector" : "executeReversedMergeAddressLinesLenses",
-				"previewHeight" : 250,
+				"exampleSelector" : "executeReversedRenameUserAddressesLenses",
+				"previewHeight" : 430,
 				"previewShowSelector" : "gtOutputFor:context:",
 				"exampleBehaviorName" : "LensesAddressShowcase",
 				"codeExpanded" : false,
@@ -480,7 +517,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-15T17:41:31.652406-03:00"
+						"dateAndTimeString" : "2021-12-17T21:09:29.941935-03:00"
 					}
 				},
 				"editEmail" : {
@@ -491,17 +528,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-12-15T17:44:30.012837-03:00"
+						"dateAndTimeString" : "2021-12-17T21:09:54.238023-03:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "b0EkEZePDQCK0znZAUfz0A=="
+					"uidString" : "z5DANMKPDQCRlhadAv8eDQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The previously removed properties (`phone_number` and `state`) have default values, which are empty strings. Default values can be defined by user."
+				"string" : "The previously removed properties (`phone_number`) have default values, which are empty strings. Default values can be defined by user."
 			}
 		]
 	},
@@ -513,7 +550,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2021-12-07T13:33:33.220931-03:00"
+			"dateAndTimeString" : "2021-12-17T19:39:13.073855-03:00"
 		}
 	},
 	"editEmail" : {
@@ -524,15 +561,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2021-12-07T16:02:22.567892-03:00"
+			"dateAndTimeString" : "2021-12-17T19:39:13.073855-03:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Address Merge Fields Example"
+		"title" : "Rename Addresses Example"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "eb4fd3ab-f28e-0d00-b81a-9d050d7afc0f"
+		"uuid" : "64a6f4f1-c08f-0d00-9781-b32d02d405be"
 	}
 }
