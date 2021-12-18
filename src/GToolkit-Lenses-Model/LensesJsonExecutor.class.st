@@ -210,7 +210,7 @@ LensesJsonExecutor >> visitLensesSplitLens: aLens [
 
 	self step
 		at: aLens name
-		ifPresent: [ :aValue | 
+		ifPresent: [ :aValue :anObject | 
 			| aSubExpressions allDestinations |
 			aSubExpressions := aLens splitter value: aValue.
 			allDestinations := aLens allDestinations.
@@ -221,12 +221,12 @@ LensesJsonExecutor >> visitLensesSplitLens: aLens [
 						aSubExpressions
 							detect: [ :anAssoc | anAssoc key = anIndex ]
 							ifFound: [ :anAssoc | 
-								self step
+								anObject
 									at: aDestination
 									put: anAssoc value ]
 							ifNone: [ self error: 'Unexpected split error' ] ] ]
 				ifFalse: [ self error: ('Cannot split value: {1}' format: aValue) ] ]
-		ifAbsent: [ self step at: aLens name put: aLens defaultValue ]
+		ifAbsent: [ :anObject | anObject at: aLens name put: aLens defaultValue ]
 ]
 
 { #category : #visiting }

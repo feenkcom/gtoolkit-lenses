@@ -88,7 +88,8 @@ LensesMergeLens >> reversed [
 	^ LensesSplitLens new
 		  name: self firstName;
 		  destination: self secondName;
-		  splitter: self format asLensesSplitter
+		  splitter: self format asLensesSplitter;
+		  mergeFormat: self format
 ]
 
 { #category : #accessing }

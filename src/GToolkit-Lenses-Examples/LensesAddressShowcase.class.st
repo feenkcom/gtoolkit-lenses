@@ -73,6 +73,23 @@ LensesAddressShowcase >> executeReversedMergeAddressLinesLenses [
 	^ aResult
 ]
 
+{ #category : #'examples - in addresses' }
+LensesAddressShowcase >> executeReversedRenameUserAddressesLenses [
+
+	<gtExample>
+	| aLenses aResult anInput |
+	aLenses := self reversedRenameUserAddressesLenses.
+	anInput := self executeRenameUserAddressesLenses output object copy.
+
+	aResult := aLenses execute: anInput.
+
+	self
+		assert: aResult output object
+		equals: self reversedRenameUserAddressesResultJsonObject.
+
+	^ aResult
+]
+
 { #category : #'examples - split' }
 LensesAddressShowcase >> executeReversedSplitStreetNameAndNumberLenses [
 
@@ -224,7 +241,7 @@ LensesAddressShowcase >> renameUserAddressesLenses [
 				merge: 'address_line_one' and: 'address_line_two' format: '{1}, {2}';
 				rename: 'address_line_one' to: 'street_name';
 				add: 'country' value: 'Germany';
-				remove: 'phone_number' ].
+				remove: 'phone_number' defaultValue: '' ].
 
 	self assert: aLenses lenses size equals: 2.
 	self assert: aLenses lenses second lenses size equals: 4.
@@ -300,6 +317,39 @@ LensesAddressShowcase >> reversedMergedResultJsonObject [
 		  add: 'address_line_two' -> 'apartment 23';
 		  add: 'phone_number' -> '';
 		  add: 'state' -> '';
+		  yourself
+]
+
+{ #category : #'examples - in addresses' }
+LensesAddressShowcase >> reversedRenameUserAddressesLenses [
+
+	<gtExample>
+	^ self renameUserAddressesLenses reversed
+]
+
+{ #category : #'examples - in addresses' }
+LensesAddressShowcase >> reversedRenameUserAddressesResultJsonObject [
+
+	<gtExample>
+	^ OrderedDictionary new
+		  add: 'name' -> 'Annett T Wannemaker';
+		  add: 'login' -> 'wannemaker';
+		  add: 'addresses' -> { 
+					  (OrderedDictionary new
+						   add: 'address_line_one' -> 'Townhall Strasse';
+						   add: 'address_line_two' -> '24A Obergeschoss';
+						   add: 'postalCode' -> '234223';
+						   add: 'city' -> 'Bremen';
+						   add: 'phone_number' -> '';
+						   yourself).
+
+					  (OrderedDictionary new
+						   add: 'address_line_one' -> 'Lützowplatz 112';
+						   add: 'address_line_two' -> 'apartment 23';
+						   add: 'postalCode' -> '54429';
+						   add: 'city' -> 'Heddert';
+						   add: 'phone_number' -> '';
+						   yourself) };
 		  yourself
 ]
 
