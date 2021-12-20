@@ -36,5 +36,9 @@ TLensesJsonObjectAccess >> gtTextFor: aView [
 		  priority: 2;
 		  aptitude: [ BrGlamorousCodeEditorAptitude ];
 		  styler: [ JSONParser gtStyler ];
-		  text: [ STONJSON toStringPretty: self object ]
+		  text: [ 
+			  String streamContents: [ :aStream | 
+					  (NeoJSONWriter on: aStream)
+						  prettyPrint: true;
+						  nextPut: self object ] ]
 ]
