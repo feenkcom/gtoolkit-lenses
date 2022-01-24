@@ -26,10 +26,9 @@ LensesResult >> gtStepsInputAndOutputViewFor: aView [
 				            forObject: self
 				            viewSelector: #gtHistoryFor:.
 			  aSteps constraintsDo: [ :c | c linear weight: 0.5 ].
-			  aSteps border:
-					  (BlBorder
-						   paint: BrGlamorousColors disabledButtonBorderColor
-						   width: 1).
+			  aSteps background: Color white;
+			  	aptitude: BrShadowAptitude;
+			  	margin: (BlInsets all: 10).
 			  aSteps when: GtPhlowObjectToSpawn do: [ :anEvent | 
 					  anEvent consumed: true.
 					  NonInteractiveTranscript stdout
@@ -53,19 +52,17 @@ LensesResult >> gtStepsInputAndOutputViewFor: aView [
 			  anInput := GtInspector
 				             forObject: self
 				             viewSelector: #gtInputFor:context:.
-			  anInput border:
-				  (BlBorder
-					   paint: BrGlamorousColors disabledButtonBorderColor
-					   width: 1).
-			  anInput margin: (BlInsets left: 10 right: 10).
+			  anInput 
+			  	background: Color white;
+			  	aptitude: BrShadowAptitude;
+			  	margin: (BlInsets all: 10).
 
 			  anOutput := GtInspector
 				              forObject: self
 				              viewSelector: #gtOutputFor:context:.
-			  anOutput border:
-				  (BlBorder
-					   paint: BrGlamorousColors disabledButtonBorderColor
-					   width: 1).
+			  anOutput background: Color white;
+			  	aptitude: BrShadowAptitude;
+			  	margin: (BlInsets all: 10).
 
 			  BrHorizontalPane new
 				  padding: (BlInsets all: 10);
@@ -88,10 +85,9 @@ LensesResult >> gtStepsTextInputAndOutputViewFor: aView [
 				            forObject: self
 				            viewSelector: #gtHistoryFor:.
 			  aSteps constraintsDo: [ :c | c linear weight: 0.5 ].
-			  aSteps border:
-					  (BlBorder
-						   paint: BrGlamorousColors disabledButtonBorderColor
-						   width: 1).
+			  aSteps background: Color white;
+			  	aptitude: BrShadowAptitude;
+			  	margin: (BlInsets all: 10).
 
 			  aSteps when: GtPhlowObjectToSpawn do: [ :anEvent | 
 					  anEvent consumed: true.
@@ -117,19 +113,16 @@ LensesResult >> gtStepsTextInputAndOutputViewFor: aView [
 			  anInput := GtInspector
 				             forObject: self
 				             viewSelector: #gtInputTextFor:context:.
-			  anInput border:
-				  (BlBorder
-					   paint: BrGlamorousColors disabledButtonBorderColor
-					   width: 1).
-			  anInput margin: (BlInsets left: 10 right: 10).
+			  anInput background: Color white;
+			  	aptitude: BrShadowAptitude;
+			  	margin: (BlInsets all: 10).
 
 			  anOutput := GtInspector
 				              forObject: self
 				              viewSelector: #gtOutputTextFor:context:.
-			  anOutput border:
-				  (BlBorder
-					   paint: BrGlamorousColors disabledButtonBorderColor
-					   width: 1).
+			  anOutput background: Color white;
+			  	aptitude: BrShadowAptitude;
+			  	margin: (BlInsets all: 10).
 
 			  BrHorizontalPane new
 				  padding: (BlInsets all: 10);
