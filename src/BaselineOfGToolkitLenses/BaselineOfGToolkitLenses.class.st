@@ -11,6 +11,15 @@ BaselineOfGToolkitLenses class >> gtDependencyAnalysisPreloadedBaselines [
 		  BaselineOfGToolkit
 ]
 
+{ #category : #accessing }
+BaselineOfGToolkitLenses class >> loadLepiter [
+	| currentProperties |
+	currentProperties := LeDatabasesRegistry defaultLogicalDatabase properties.
+	currentProperties
+		addRegisteredDirectory: FileLocator imageDirectory/ 'pharo-local'/'iceberg'/'feenkcom'/'gtoolkit-lenses'/'lepiterdb'.
+	LeDatabasesRegistry default defaultLogicalDatabase reload.
+]
+
 { #category : #baseline }
 BaselineOfGToolkitLenses >> baseline: spec [
 
