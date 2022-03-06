@@ -22,15 +22,13 @@ BaselineOfGToolkitLenses class >> loadLepiter [
 
 { #category : #baseline }
 BaselineOfGToolkitLenses >> baseline: spec [
-
 	<baseline>
-	spec for: #common do: [ 
+	spec for: #'common' do: [
 		spec
-			baseline: 'GToolkitLensesBasic'
-			with: [ 
-			spec repository: 'github://feenkcom/gtoolkit-lenses:main/src' ].
+			baseline: 'GToolkitLensesBasic' with: [
+				spec repository: 'github://feenkcom/gtoolkit-lenses:v0.6.0/src' ].
 
-		spec
-			package: 'GToolkit-Lenses-Widgets'
-			with: [ spec requires: #( 'GToolkitLensesBasic' ) ] ]
+		spec package: 'GToolkit-Lenses-Widgets' with: [
+			spec requires: #('GToolkitLensesBasic') ].
+	]
 ]
