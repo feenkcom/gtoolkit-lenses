@@ -11,7 +11,7 @@ BaselineOfGToolkitLensesBasic >> baseline: spec [
 	spec for: #common do: [ 
 		spec
 			baseline: 'NeoJSON'
-			with: [ spec repository: 'github://svenvc/NeoJSON:v17/repository' ].
+			with: [ spec repository: 'github://svenvc/NeoJSON:master/repository' ].
 
 		spec package: 'GToolkit-Lenses-Model' with: [ spec requires: #(  ) ].
 
